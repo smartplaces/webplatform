@@ -1,0 +1,36 @@
+<template name="beaconsList">
+    <h2 class="sub-header">Beacons</h2>
+    <div class="pull-right"><a href="{{pathFor 'newbeacon'}}" class="btn btn-danger" role="button">+Add</a></div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>UUID : Magor : Minor</th>
+                    <th>Location</th>
+                    <th>Tags</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each beacons}}
+                <tr>
+                    <td></td>
+                    <td>{{name}}</td>
+                    <td>{{uuid}} : {{major}} : {{minor}}</td>
+                    <td>
+                       {{locationInfo}}
+                    </td>
+                    <td>
+                        {{#each tags}}
+                        <span class="label label-default">{{this}}</span>
+                         {{/each}}
+                    </td>
+                    <td><a href="{{pathFor 'beacon'}}" class="btn btn-primary" role="button">Edit</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>

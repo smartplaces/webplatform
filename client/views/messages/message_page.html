@@ -1,0 +1,28 @@
+<template name="messagePage">
+    <h2 class="sub-header">Message</h2>
+    <form role="form">
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input class="form-control" id="text" placeholder="Enter Text" value="{{text}}">
+        </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input class="form-control" id="url" placeholder="Enter URL" value="{{url}}">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input class="form-control" id="description" placeholder="Enter Description" value="{{description}}">
+        </div>
+        <div class="btn-toolbar" role="toolbar">
+            <div class="btn-group">
+                <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+            <div class="btn-group">
+                <a href="{{pathFor 'messages'}}" class="btn btn-default" role="button">Cancel</a>
+            </div>
+            <div class="btn-group">
+                <a href="#" class="btn btn-danger" role="button" id="delete">Delete</a>
+            </div>
+        </div>
+    </form>
+</template>

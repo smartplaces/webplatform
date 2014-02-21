@@ -1,0 +1,30 @@
+<template name="locationsList">
+    <h2 class="sub-header">Locations</h2>
+    {{> map}}
+    <br/>
+    <div class="pull-right"><a href="#" class="btn btn-danger" role="button" id="add">+Add</a></div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Address</th>
+                    <th>Contacts</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each locations}}
+                <tr>
+                    <td></td>
+                    <td>{{title}}</td>
+                    <td>{{address}}</td>
+                    <td>{{contacts}}</td>
+                    <td><a href="{{pathFor 'location'}}" class="btn btn-primary" role="button">Edit</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>

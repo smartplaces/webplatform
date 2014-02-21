@@ -1,0 +1,88 @@
+<template name="scenarioPage">
+    <h2 class="sub-header">Scenario</h2>
+    <form role="form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" id="name" placeholder="Enter Name" value="{{name}}">
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <select class="form-control" id="message">
+                {{#if message}}
+                    <option value="{{message}}" selected="true">{{messageInfo}}</option>
+                {{else}}
+                    <option></option>
+                {{/if}}
+                {{#each messages}}
+                <option value="{{_id}}">{{text}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="form-group">
+            <label for="beacons">Beacons</label>
+            <select class="form-control" id="beacons" multiple="true">
+                {{#each tags}}
+                <option value="{{name}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="proximity">Proximity</label>
+            <select class="form-control" id="proximity" multiple="true">
+                <option></option>
+                {{#each proximities}}
+                    <option value="{{code}}">{{label}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="event">Event</label>
+            <select class="form-control" id="event" multiple="true">
+                <option></option>
+                {{#each events}}
+                    <option value="{{code}}">{{label}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="frequency">Frequency</label>
+            <select class="form-control" id="frequency">
+                <option></option>
+                {{#each frequencies}}
+                <option value="{{code}}">{{label}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+            <div class='input-group date' id='start_dp'>
+                <input type='text' class="form-control" id='start' />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class='input-group date' id='end_dp'>
+                <input type='text' class="form-control" id='end' />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="active" {{isChecked}}> Active
+            </label>
+        </div>
+        <div class="btn-toolbar" role="toolbar">
+            <div class="btn-group">
+                <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+            <div class="btn-group">
+                <a href="{{pathFor 'scenarios'}}" class="btn btn-default" role="button">Cancel</a>
+            </div>
+            <div class="btn-group">
+                <a href="#" class="btn btn-danger" role="button" id="delete">Delete</a>
+            </div>
+        </div>
+    </form>
+</template>

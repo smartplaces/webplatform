@@ -1,0 +1,28 @@
+<template name="messagesList">
+    <h2 class="sub-header">Messages</h2>
+    <div class="pull-right"><a href="{{pathFor 'newmessage'}}" class="btn btn-danger" role="button">+Add</a></div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Text</th>
+                    <th>URL</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each messages}}
+                <tr>
+                    <td></td>
+                    <td>{{text}}</td>
+                    <td><a href="{{url}}">{{url}}</a></td>
+                    <td>{{description}}</td>
+                    <td><a href="{{pathFor 'message'}}" class="btn btn-primary" role="button">Edit</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>

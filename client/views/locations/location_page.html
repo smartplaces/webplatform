@@ -1,0 +1,29 @@
+<template name="locationPage">
+    <h2 class="sub-header">Location</h2>
+    <form role="form">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" id="title" placeholder="Enter Title" value="{{title}}">
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input class="form-control" id="address" placeholder="Enter Address" value="{{address}}">
+        </div>
+        <div class="form-group">
+            <label for="contacts">Contacts</label>
+            <input class="form-control" id="contacts" placeholder="Enter Contacts" value="{{contacts}}">
+        </div>
+
+        <div class="btn-toolbar" role="toolbar">
+            <div class="btn-group">
+                <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+            <div class="btn-group">
+                <a href="{{pathFor 'locations'}}" class="btn btn-default" role="button">Cancel</a>
+            </div>
+            <div class="btn-group">
+                <a href="#" class="btn btn-danger" role="button" id="delete">Delete</a>
+            </div>
+        </div>
+    </form>
+</template>
