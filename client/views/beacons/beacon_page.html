@@ -1,17 +1,14 @@
 <template name="beaconPage">
-    <h2 class="sub-header">Beacon</h2>
+    <div class="bs-callout bs-callout-info"><h4>Редактирование маячка</h4></div>
+
     <form role="form">
         <div class="form-group">
-            <label for="name">Name</label>
-            <input class="form-control" id="name" placeholder="Enter Name" value="{{name}}">
-        </div>
-        <div class="form-group">
-            <label for="location">Location</label>
+            <label for="location">Место, где расположен маячок</label>
             <select class="form-control" id="location">
                 {{#if location}}
-                    <option value="{{location}}" selected="true">{{locationInfo}}</option>
+                <option value="{{location}}" selected="true">{{locationInfo}}</option>
                 {{else}}
-                    <option></option>
+                <option></option>
                 {{/if}}
                 {{#each locations}}
                 <option value="{{_id}}">{{title}}</option>
@@ -19,31 +16,32 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="uuid">UUID</label>
-            <input class="form-control" id="uuid" placeholder="Enter UUID" value="{{uuid}}">
+            <label for="name">Имя маячка</label>
+            <input class="form-control" id="name" placeholder="Имя маячка" value="{{name}}">
         </div>
         <div class="form-group">
-            <label for="major">Major</label>
-            <input class="form-control" id="major" placeholder="Enter Major" value="{{major}}">
+            <label for="uuid">Идентификатор маячка</label>
+            <div class="row">
+                <div class="col-md-8">
+                    <input class="form-control" id="uuid" placeholder="UUID" value="{{uuid}}">
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" id="major" placeholder="Major" value="{{major}}">
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control" id="minor" placeholder="Minor" value="{{minor}}">
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <label for="minor">Minor</label>
-            <input class="form-control" id="minor" placeholder="Enter Major" value="{{minor}}">
+            <label for="tags">Теги маячка</label>
+            <input class="form-control" id="tags" placeholder="Теги маячка" value={{tags}}>
         </div>
         <div class="form-group">
-            <label for="tags">Tags</label>
-            <input class="form-control" id="tags" value={{tags}}>
-        </div>
-        <div class="btn-toolbar" role="toolbar">
-            <div class="btn-group">
-                <button type="submit" class="btn btn-danger">Save</button>
-            </div>
-            <div class="btn-group">
-                <a href="{{pathFor 'beacons'}}" class="btn btn-default" role="button">Cancel</a>
-            </div>
-            <div class="btn-group">
-                <a href="#" class="btn btn-danger" role="button" id="delete">Delete</a>
-            </div>
+            <a href="{{pathFor 'beacons'}}" class="btn btn-default">Отмена</a>
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</button>
+            <a href="#" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
         </div>
     </form>
+
 </template>

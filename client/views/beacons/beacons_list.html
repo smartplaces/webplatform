@@ -1,36 +1,36 @@
 <template name="beaconsList">
-    <h2 class="sub-header">Beacons</h2>
-    <div class="pull-right"><a href="{{pathFor 'newbeacon'}}" class="btn btn-danger" role="button">+Add</a></div>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>UUID : Magor : Minor</th>
-                    <th>Location</th>
-                    <th>Tags</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each beacons}}
-                <tr>
-                    <td></td>
-                    <td>{{name}}</td>
-                    <td>{{uuid}} : {{major}} : {{minor}}</td>
-                    <td>
-                       {{locationInfo}}
-                    </td>
-                    <td>
-                        {{#each tags}}
-                        <span class="label label-default">{{this}}</span>
-                         {{/each}}
-                    </td>
-                    <td><a href="{{pathFor 'beacon'}}" class="btn btn-primary" role="button">Edit</button></td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
+    <div class="bs-callout bs-callout-info"><h4>Добавьте маячки, указывая, в каких местах они расположены</h4><p>Для редактирования или удаления маячка, нажмите на него в списке.</p></div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <p><a class="btn btn-primary" href="{{pathFor 'newbeacon'}}"><span class="glyphicon glyphicon-plus"></span> Добавить маячок</a></p>
+        </div>
+        <div class="col-md-6">
+            <form role="form">
+                <select class="form-control">
+                    <option>Все места</option>
+                    <option>Место 1</option>
+                    <option>Место 2</option>
+                    <option>Место 3</option>
+                </select>
+                <span class="help-block">Можно фильтровать список маячков по месту, где они расположены</span>
+            </form>
+        </div>
     </div>
+
+    <div class="list-group">
+        {{#each beacons}}
+        <a href="{{pathFor 'beacon'}}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{name}}</h4>
+            <p>{{uuid}} : {{major}} : {{minor}}</p>
+            <p>{{locationInfo}}</p>
+            <p class="list-group-item-text">
+                {{#each tags}}
+                <span class="label label-default">{{this}}</span>&nbsp;
+                {{/each}}
+            </p>
+        </a>
+        {{/each}}
+    </div>
+
 </template>
