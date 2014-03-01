@@ -1,10 +1,10 @@
-<template name="beaconPage">
+<template name="beaconAddPage">
     <form role="form" style="margin-top: 20px;">
         <div class="panel panel-primary">
-            <div class="panel-heading"><h4 class="panel-title">Редактирование маячка <a href="{{pathFor 'beacons'}}" class="pull-right">&times;</a></h4></div>
+            <div class="panel-heading"><h4 class="panel-title">Добавление маячка <a href="{{pathFor 'beacons'}}" class="pull-right">&times;</a></h4></div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label for="location">Место, где расположен маячок</label>
+                    <label for="location">Где расположен маячок?</label>
                     <select class="form-control" id="location">
                         {{#if location}}
                         <option value="{{location}}" selected="true">{{locationInfo}}</option>
@@ -17,11 +17,12 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="name">Имя маячка</label>
+                    <label for="name">Как назовёте маячок?</label>
                     <input class="form-control" id="name" placeholder="Имя маячка" value="{{name}}">
+                    <span class="help-block">Маячок легко найти в общем списке по имени.</span>
                 </div>
                 <div class="form-group">
-                    <label for="uuid">Идентификатор маячка</label>
+                    <label for="uuid">Какой у маячка идентификатор?</label>
                     <div class="row">
                         <div class="col-md-8">
                             <input class="form-control" id="uuid" placeholder="UUID" value="{{uuid}}">
@@ -35,15 +36,15 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="tags">Теги маячка</label>
+                    <label for="tags">Какие назначите маячку теги?</label>
                     <input class="form-control" id="tags" placeholder="Теги маячка" value={{tags}}>
+                    <span class="help-block">С помощью тегов можно создать сценарий для группы маячков.</span>
                 </div>
             </div>
             <div class="panel-footer text-right">
                 <div class="btn-toolbar" role="toolbar">
                     <a href="{{pathFor 'beacons'}}" class="btn btn-default">Отмена</a>
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</button>
-                    <a href="#" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ОК</button>
                 </div>
             </div>
         </div>

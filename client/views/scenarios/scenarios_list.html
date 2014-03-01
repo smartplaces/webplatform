@@ -1,52 +1,16 @@
 <template name="scenariosList">
-    <h2 class="sub-header">Scenarios</h2>
-    <div class="pull-right"><a href="{{pathFor 'newscenario'}}" class="btn btn-danger" role="button">+Add</a></div>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Message</th>
-                    <th>Beacons</th>
-                    <th>Proximity</th>
-                    <th>Event</th>
-                    <th>Frequency</th>
-                    <th>Period</th>
-                    <th>Active</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each scenarios}}
-                <tr>
-                    <td></td>
-                    <td>{{name}}</td>
-                    <td>{{messageInfo}}</td>
-                    <td>
-                        {{#each beacons}}
-                        <span class="label label-default">{{this}}</span>
-                        {{/each}}
-                    </td>
-                    <td>
-                        {{#each proximity}}
-                            <span class="label label-default">{{label 'proximity'}}</span>
-                        {{/each}}
-                    </td>
-                    <td>
-                        {{#each event}}
-                            <span class="label label-default">{{label 'event'}}</span>
-                        {{/each}}
-                    </td>
-                    <td>
-                        {{label 'frequency'}}
-                    </td>
-                    <td>{{formatDate 'start'}} - {{formatDate 'end'}}</td>
-                    <td>{{isActive}}</td>
-                    <td><a href="{{pathFor 'scenario'}}" class="btn btn-primary" role="button">Edit</button></td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
+    <div class="bs-callout bs-callout-info"><h4>Создайте сценарии реакции на маячки</h4><p>Для редактирования или удаления сценария, нажмите на него в списке.</p></div>
+
+    <p><a class="btn btn-primary" href="{{pathFor 'newscenario'}}" role="button"><span class="glyphicon glyphicon-plus"></span> Добавить сценарий</a></p>
+
+    <div class="list-group">
+        {{#each scenarios}}
+        <a href="{{pathFor 'scenario'}}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{name}}</h4>
+            <p class="list-group-item-text">Если посетитель {{#each event}}<span class="label label-default">{{label 'event'}}</span>{{/each}} {{#each proximity}}<span class="label label-default">{{label 'proximity'}}</span>{{/each}} к маячку с тегом {{#each beacons}}<span class="label label-default">{{this}}</span>{{/each}}, тогда показать сообщение {{messageInfo}}.</p>
+            <p class="list-group-item-text">Сценарий активен: {{isActive}}. Повторять с частотой {{label 'frequency'}}. Период действия сценария: {{formatDate 'start'}} - {{formatDate 'end'}}</p>
+        </a>
+        {{/each}}
     </div>
+
 </template>

@@ -1,28 +1,16 @@
 <template name="messagesList">
-    <h2 class="sub-header">Messages</h2>
-    <div class="pull-right"><a href="{{pathFor 'newmessage'}}" class="btn btn-danger" role="button">+Add</a></div>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Text</th>
-                    <th>URL</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each messages}}
-                <tr>
-                    <td></td>
-                    <td>{{text}}</td>
-                    <td><a href="{{url}}">{{url}}</a></td>
-                    <td>{{description}}</td>
-                    <td><a href="{{pathFor 'message'}}" class="btn btn-primary" role="button">Edit</button></td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
+    <div class="bs-callout bs-callout-info"><h4>Создайте сообщения, которые будут показаны по заданным сценариям</h4><p>Для редактирования или удаления сообщения, нажмите на него в списке.</p></div>
+
+    <p><a class="btn btn-primary" href="{{pathFor 'newmessage'}}" role="button"><span class="glyphicon glyphicon-plus"></span> Добавить сообщение</a></p>
+
+    <div class="list-group">
+        {{#each messages}}
+        <a href="{{pathFor 'message'}}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{text}}</h4>
+            <p class="list-group-item-text">{{url}}</p>
+            <p class="list-group-item-text">{{description}}</p>
+        </a>
+        {{/each}}
     </div>
+
 </template>
