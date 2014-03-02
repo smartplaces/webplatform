@@ -1,29 +1,31 @@
-<template name="scenarioPage">
+<template name="scenarioNewPage">
     <form role="form" style="margin-top: 20px;">
         <div class="panel panel-primary">
-            <div class="panel-heading"><h4 class="panel-title">Редактирование сценария <a href="{{pathFor 'scenarios'}}" class="pull-right">&times;</a></h4></div>
+            <div class="panel-heading"><h4 class="panel-title">Добавление сценария <a href="{{pathFor 'scenarios'}}" class="pull-right">&times;</a></h4></div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="form-group" id="nameGroup">
-                            <label for="name">Имя сценария</label>
+                            <label for="name">Как назовёте сценарий?</label>
                             <input class="form-control" id="name" placeholder="Имя сценария" value="{{name}}">
+                            <span class="help-block">Сценарий легко найти в общем списке по имени.</span>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group" id="activeGroup">
-                            <label for="active">Активный сценарий</label>
+                            <label for="active">Сценарий сразу будет активен?</label>
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" {{isChecked}} id="active"> Да
                                 </label>
                             </div>
+                            <span class="help-block">Выполняются только активные.</span>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <legend><h4>Условие сценария</h4></legend>
+                        <legend><h4>Каково условие сценария?</h4></legend>
                         <div class="form-group">
                             <select class="form-control" id="event" multiple="true" placeholder="Событие">
                                 <option></option>
@@ -41,7 +43,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="beacons">Теги маячков</label>
+                            <label for="beacons">Маячки по тегам</label>
                             <select class="form-control" id="beacons" multiple="true" placeholder="Теги маячков">
                                 {{#each tags}}
                                 <option value="{{name}}">{{name}}</option>
@@ -50,7 +52,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <legend><h4>Действие</h4></legend>
+                        <legend><h4>Что нужно сделать?</h4></legend>
                         <div class="form-group">
                             <label for="message">Сообщение</label>
                             <select class="form-control" id="message" placeholder="Сообщение">
@@ -71,7 +73,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="start">Дата старта</label>
+                                <label for="start">Когда сценарий начинает работу?</label>
                                 <div class="input-group date" id="start_dp">
                                     <input type="text" class="form-control" id="start" placeholder="Дата старта" />
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -81,7 +83,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="end">Дата завершения</label>
+                                <label for="end">Когда сценарий завершает работу?</label>
                                 <div class="input-group date" id="end_dp">
                                     <input type="text" class="form-control" id="end" placeholder="Дата завершения" />
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -93,7 +95,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="frequency">Минимум минут между повторениями</label>
+                                <label for="frequency">Сколько минимум минут между повторениями?</label>
                                 <select class="form-control" id="frequency" placeholder="Минимальная частота повторений">
                                     <option></option>
                                     {{#each frequencies}}
@@ -112,8 +114,7 @@
             <div class="panel-footer text-right">
                 <div class="btn-toolbar" role="toolbar">
                     <a href="{{pathFor 'scenarios'}}" class="btn btn-default">Отмена</a>
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</button>
-                    <a href="#" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ОК</button>
                 </div>
             </div>
         </div>

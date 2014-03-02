@@ -1,4 +1,4 @@
-Template.scenarioPage.rendered = function (){
+Template.scenarioNewPage.rendered = function (){
     $('#message').select2({
         allowClear: false
     });
@@ -54,7 +54,7 @@ Template.scenarioPage.rendered = function (){
     });
 }
 
-Template.scenarioPage.helpers({
+Template.scenarioNewPage.helpers({
     messages: function(){
         return Messages.find();
     },
@@ -88,7 +88,7 @@ Template.scenarioPage.helpers({
     }
 });
 
-Template.scenarioPage.events({
+Template.scenarioNewPage.events({
     'click #delete':function(e){
       e.preventDefault();
       if (confirm("Вы действительно хотите удалить этот сценарий?")){

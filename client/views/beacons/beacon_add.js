@@ -1,4 +1,4 @@
-Template.beaconAddPage.rendered = function (){
+Template.beaconNewPage.rendered = function (){
 
     var tags = [];
 
@@ -10,13 +10,13 @@ Template.beaconAddPage.rendered = function (){
 
 
     $('#location').select2({
-        placeholder: "Select a Location",
+        placeholder: "Место, где расположен маячок",
         allowClear: true
     });
 
 }
 
-Template.beaconAddPage.helpers({
+Template.beaconNewPage.helpers({
     locations: function (){
         return Locations.find();
     },
@@ -32,10 +32,10 @@ Template.beaconAddPage.helpers({
     }
 });
 
-Template.beaconAddPage.events({
+Template.beaconNewPage.events({
     'click #delete':function(e){
       e.preventDefault();
-      if (confirm("Are you realy want to delete this beacon?")){
+      if (confirm("Вы действительно хотите удалить этот маячок?")){
         Beacons.remove({_id:this._id}, function(error){
           if (error){
               alert(error.reason);

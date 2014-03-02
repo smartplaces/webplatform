@@ -10,7 +10,7 @@ Template.beaconPage.rendered = function (){
 
 
     $('#location').select2({
-        placeholder: "Select a Location",
+        placeholder: "Место, где расположен маячок",
         allowClear: true
     });
 
