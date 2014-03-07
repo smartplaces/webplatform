@@ -4,6 +4,11 @@ Template.map.rendered = function (){
     }
 
     Deps.autorun(function() {
+      gmaps.removeAllMarkers();
+      Locations.find().forEach(function(loc){gmaps.addMarker(loc);});
+      gmaps.calcBounds();
+    });
+    /*Deps.autorun(function() {
         var locations = Locations.find().fetch();
 
         _.each(locations, function(location) {
@@ -20,12 +25,13 @@ Template.map.rendered = function (){
                 };
 
                 // check if marker already exists
-                if (!gmaps.markerExists('id', objMarker.id))
+                if (!gmaps.markerExists(objMarker.id))
                     gmaps.addMarker(objMarker);
 
             }
         });
-    });
+    });*/
+
 };
 
 Template.map.destroyed = function (){

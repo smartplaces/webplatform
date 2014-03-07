@@ -1,3 +1,4 @@
+/*
 if (Beacons.find().count()===0){
   Beacons.insert({
     uuid:"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
@@ -53,3 +54,4 @@ if (Tags.find().count()===0){
   Tags.insert({name:'Shop'});
   Tags.insert({name:'POS'});
 }
+*/
