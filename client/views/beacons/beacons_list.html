@@ -7,11 +7,11 @@
         </div>
         <div class="col-md-6">
             <form role="form">
-                <select class="form-control">
-                    <option>Все места</option>
-                    <option>Место 1</option>
-                    <option>Место 2</option>
-                    <option>Место 3</option>
+                <select class="form-control" id="locationFilter">
+                    <option value="">Все места</option>
+                    {{#each allLocations}}
+                    <option value="{{_id}}" {{isCurrentLocation _id}}>{{title}} ({{address}})</option>
+                {{/each}}
                 </select>
                 <span class="help-block">Можно фильтровать список маячков по месту, где они расположены</span>
             </form>
@@ -19,17 +19,20 @@
     </div>
 
     <div class="list-group">
+        {{#each locations}}
         {{#each beacons}}
-        <a href="{{pathFor 'beacon'}}" class="list-group-item">
+        <a href="{{pathFor 'beacon'}}" class="list-group-item beacon-item">
+            <span class="beacon-item-remove glyphicon glyphicon-remove pull-right"></span>
             <h4 class="list-group-item-heading">{{name}}</h4>
-            <p>{{uuid}} : {{major}} : {{minor}}</p>
-            <p>{{locationInfo}}</p>
+            <p>{{../title}} ({{../address}})</p>
+            <p>{{../uuid}} : {{../major}} : {{minor}}</p>
             <p class="list-group-item-text">
                 {{#each tags}}
                 <span class="label label-default">{{this}}</span>&nbsp;
                 {{/each}}
             </p>
         </a>
+        {{/each}}
         {{/each}}
     </div>
 

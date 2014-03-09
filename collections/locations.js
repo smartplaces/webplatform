@@ -18,19 +18,30 @@ Meteor.methods({
       throw new Meteor.Error(422,'Please fill in required fields!');
     }
 
-    var data = _.extend(_.pick(location,'title','address','contacts','lat', 'lng'), {
+    var data = _.extend(_.pick(location,'title','address','contacts','lat', 'lng','major', 'uuid','beacons'), {
       userId: user._id,
       updated: new Date().getTime()
     });
 
     if (location._id){
+      _.each(data.beacons,function(b){
+        if (!b.minor) b.minor=incrementCounter(data.major, 1);
+      });
       Locations.update(location._id,{$set:data},function (error){
         if (error){
           throw new Meteor.Error(500, 'Can\'t save location data!');
         }
       });
     }else{
+      var major = incrementCounter(UUID, 1);
+      data.major = major;
+      data.uuid = UUID;
+      if (!location.beacons){
+        location.beacons = [];
+      }
       Locations.insert(data);
     }
+
+
   }
 });

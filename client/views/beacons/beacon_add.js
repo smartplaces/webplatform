@@ -21,66 +21,55 @@ Template.beaconNewPage.helpers({
         return Locations.find();
     },
 
-    locationInfo: function(){
-        var loc = Locations.findOne(this.location);
-
-        if (loc){
-            return loc.title;
-        }else{
-            return '';
-        }
+    isCurrentLocation: function(value){
+      if (Session.get('locationFilter')==value){
+        return 'selected';
+      }else{
+        return '';
+      }
     }
 });
 
 Template.beaconNewPage.events({
-    'click #delete':function(e){
-      e.preventDefault();
-      if (confirm("Вы действительно хотите удалить этот маячок?")){
-        Beacons.remove({_id:this._id}, function(error){
-          if (error){
-              alert(error.reason);
-            }else{
-              Router.go('beacons');
-            }
-        });
-      }
-    },
-
     'submit form':function(e){
-        e.preventDefault();
+      e.preventDefault();
 
-        var beacon = {
-            name: $(e.target).find('[id=name]').val(),
-            uuid: $(e.target).find('[id=uuid]').val(),
-            major: $(e.target).find('[id=major]').val(),
-            minor: $(e.target).find('[id=minor]').val(),
-            tags:[]
+      var location = Locations.findOne($(e.target).find('[id=location]').val());
+
+      if (!location){
+        alert('Выбраное местоположение маячка отсутствует в базе :(');
+        return;
+      }
+
+      var beacon = {
+        name: $(e.target).find('[id=name]').val(),
+        tags:[]
+      }
+
+      var tags = $(e.target).find('[id=tags]').val();
+
+      _.each(tags.split(','),function(tag){
+        beacon.tags.push(tag);
+      });
+
+      if (!location.beacons){
+        location.beacons=[];
+      }
+      location.beacons.push(beacon);
+
+      Meteor.call('saveLocation',location,function (error){
+        if (error){
+          alert(error.reason);
+        }else{
+          Router.go('beacons');
         }
+      });
 
-        var tags = $(e.target).find('[id=tags]').val();
-
-        _.each(tags.split(','),function(tag){
-            beacon.tags.push(tag);
-
-        });
-
-        var location = $(e.target).find('[id=location]').val();
-
-        if (Locations.findOne(location)){
-            beacon.location = location;
+      Meteor.call('saveTags',beacon.tags,function (error){
+        if (error){
+          alert(error.reason);
         }
-
-        if (this._id){
-          _.extend(beacon,{_id:this._id});
-        }
-
-        Meteor.call('saveBeacon',beacon,function (error){
-            if (error){
-              alert(error.reason);
-            }else{
-              Router.go('beacons');
-            }
-        });
+      });
     }
 
 });

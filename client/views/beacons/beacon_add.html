@@ -6,13 +6,8 @@
                 <div class="form-group">
                     <label for="location">Где расположен маячок?</label>
                     <select class="form-control" id="location">
-                        {{#if location}}
-                        <option value="{{location}}" selected="true">{{locationInfo}}</option>
-                        {{else}}
-                        <option></option>
-                        {{/if}}
                         {{#each locations}}
-                        <option value="{{_id}}">{{title}}</option>
+                        <option value="{{_id}}" {{isCurrentLocation _id}}>{{title}}</option>
                         {{/each}}
                     </select>
                 </div>
@@ -21,6 +16,7 @@
                     <input class="form-control" id="name" placeholder="Имя маячка" value="{{name}}">
                     <span class="help-block">Маячок легко найти в общем списке по имени.</span>
                 </div>
+                <!--
                 <div class="form-group">
                     <label for="uuid">Какой у маячка идентификатор?</label>
                     <div class="row">
@@ -35,6 +31,7 @@
                         </div>
                     </div>
                 </div>
+                -->
                 <div class="form-group">
                     <label for="tags">Какие назначите маячку теги?</label>
                     <input class="form-control" id="tags" placeholder="Теги маячка" value={{tags}}>
