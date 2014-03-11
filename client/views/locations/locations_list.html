@@ -7,14 +7,12 @@
             <!--<p><a class="btn btn-primary" id="add"><span class="glyphicon glyphicon-plus"></span> Добавить место</a></p>-->
             <div class="list-group">
                 {{#each locations}}
-                <div class="list-group-item">
-                    <a href="#" class="location-item" id="{{_id}}">
+                <a href="#" class="list-group-item location-item" id="{{_id}}">
                     <span class="location-item-remove glyphicon glyphicon-remove pull-right"></span>
                     <h4 class="list-group-item-heading">{{title}}</h4>
                     <p>{{address}}</p>
                     <p class="list-group-item-text">{{contacts}}</p>
-                    </a>
-                </div>
+                </a>
                 {{/each}}
             </div>
 
