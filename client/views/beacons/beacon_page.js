@@ -17,12 +17,9 @@ Template.beaconPage.rendered = function (){
 }
 
 Template.beaconPage.helpers({
-    locations: function (){
-        return Locations.find();
-    },
 
     locationInfo: function(){
-        var loc = Locations.findOne(this.location);
+        var loc = Locations.findOne({uuid:this.uuid,major:parseInt(this.major)});
 
         if (loc){
             return loc.title;
@@ -35,15 +32,19 @@ Template.beaconPage.helpers({
 Template.beaconPage.events({
     'click #delete':function(e){
       e.preventDefault();
-      if (confirm("Are you realy want to delete this beacon?")){
-        Beacons.remove({_id:this._id}, function(error){
-          if (error){
-              alert(error.reason);
-            }else{
-              Router.go('beacons');
-            }
-        });
-      }
+      var beacon = {
+        uuid:this.uuid,
+        major:this.major,
+        minor:this.minor
+      };
+
+      Meteor.call('deleteBeacon',beacon, function (error){
+              if (error){
+                  alert(error.reason);
+              }else{
+                  Router.go('beacons');
+              }
+      });
     },
 
     'submit form':function(e){
@@ -61,20 +62,10 @@ Template.beaconPage.events({
 
         _.each(tags.split(','),function(tag){
             beacon.tags.push(tag);
-
         });
 
-        var location = $(e.target).find('[id=location]').val();
 
-        if (Locations.findOne(location)){
-            beacon.location = location;
-        }
-
-        if (this._id){
-          _.extend(beacon,{_id:this._id});
-        }
-
-        Meteor.call('saveBeacon',beacon,function (error){
+        Meteor.call('updateBeacon',beacon,function (error){
             if (error){
               alert(error.reason);
             }else{

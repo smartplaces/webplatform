@@ -18,7 +18,7 @@ Template.beaconsList.helpers({
     }else{
       return '';
     }
-  }
+  },
 });
 
 
@@ -28,16 +28,26 @@ Template.beaconsList.events({
     Session.set('locationFilter',$(e.target).val());
   },
 
-  'click .beacon-item': function(e){
-    e.preventDefault();
-    if ($(e.target).hasClass('beacon-item-remove')){
-      if (confirm("Вы действительно хотите удалить этот маячек?")){
-        alert('Удаление еще не реализовано :(');
-      }
-    }else{
-      alert('Редактирование еще не реализовано :(');
-    }
 
+  'click .beacon-item-remove': function(e){
+    e.preventDefault();
+    if (confirm("Вы уверены, что хотите удалить этот маячек?")){
+      var id = e.target.id;
+      if (id){
+        var params = id.split(':');
+        var beacon = {
+          uuid: params[0],
+          major: params[1],
+          minor: params[2]
+        }
+        Meteor.call('deleteBeacon',beacon,function (error){
+          if (error){
+              alert(error.reason);
+          }
+        });
+      }
+
+    }
   },
 
 });
