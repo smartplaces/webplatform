@@ -30,8 +30,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <legend><h4>Каково условие сценария?</h4></legend>
+                                <label for="event">Посетитель</label>
                                 <div class="form-group">
-                                    <select class="form-control" id="event" multiple="true" placeholder="Событие">
+                                    <select class="form-control" id="event" placeholder="подходит/отходит">
                                         <option></option>
                                         {{#each events}}
                                         <option value="{{code}}">{{label}}</option>
@@ -39,7 +40,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" id="proximity" multiple="true" placeholder="Расстояние">
+                                    <label for="event">на расстояние</label>
+                                    <select class="form-control" id="proximity" placeholder="расстояние до маяка">
                                         <option></option>
                                         {{#each proximities}}
                                         <option value="{{code}}">{{label}}</option>
@@ -47,8 +49,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="beacons">Маячки по тегам</label>
-                                    <select class="form-control" id="beacons" multiple="true" placeholder="Теги маячков">
+                                    <label for="beacons">к следующим маячкам</label>
+                                    <select class="form-control" id="beacons" multiple="true" placeholder="теги маячков">
                                         {{#each tags}}
                                         <option value="{{name}}">{{name}}</option>
                                         {{/each}}
@@ -56,19 +58,9 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <legend><h4>Что нужно сделать?</h4></legend>
+                                <legend><h4>Какое сообщение показать посетителю?</h4></legend>
                                 <div class="form-group">
-                                    <label for="message">Сообщение</label>
-                                    <select class="form-control" id="message" placeholder="Сообщение">
-                                        {{#if message}}
-                                        <option value="{{message}}" selected="true">{{messageInfo}}</option>
-                                        {{else}}
-                                        <option></option>
-                                        {{/if}}
-                                        {{#each messages}}
-                                        <option value="{{_id}}">{{text}}</option>
-                                        {{/each}}
-                                    </select>
+                                    <input class="form-control" id="message" placeholder="Ваше сообщение для посетителей" value="{{message}}">
                                 </div>
                             </div>
                         </div>

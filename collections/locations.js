@@ -11,11 +11,11 @@ Meteor.methods({
     saveLocation: function (location){
       var user = Meteor.user();
       if (!user){
-        throw new Meteor.Error(401,'You need to login to edit locations!');
+        throw new Meteor.Error(401,'Вам нужно залогиниться чтобы редактировать места!');
       }
 
       if (!location.title || !location.address){
-        throw new Meteor.Error(422,'Please fill in required fields!');
+        throw new Meteor.Error(422,'Пожалуйста, заполните все необходимые поля!');
       }
 
       var data = _.extend(_.pick(location,'title','address','contacts','lat', 'lng','major', 'uuid','beacons'), {
@@ -33,7 +33,7 @@ Meteor.methods({
         });
         Locations.update(location._id,{$set:data},function (error){
           if (error){
-            throw new Meteor.Error(500, 'Can\'t save location data!');
+            throw new Meteor.Error(500, 'Ошибка: невозможно сохранить место!');
           }
         });
       }else{
@@ -66,7 +66,7 @@ Meteor.methods({
         }
       },function (error){
         if (error){
-          throw new Meteor.Error(500, 'Can\'t delete beacon!');
+          throw new Meteor.Error(500, 'Ошибка: невозможно удалить маяк!');
         }
       });
   },
@@ -75,7 +75,7 @@ Meteor.methods({
     var user = Meteor.user();
 
     if (!user){
-      throw new Meteor.Error(401,'You need to login to edit beacons!');
+      throw new Meteor.Error(401,'Вам нужно залогиниться чтобы редактировать маяки!');
     }
 
     var data = _.pick(beacon,'name','uuid','major','minor','tags');
@@ -94,7 +94,7 @@ Meteor.methods({
         }
       },function (error){
         if (error){
-          throw new Meteor.Error(500, 'Can\'t save beacon data!');
+          throw new Meteor.Error(500, 'Ошибка: невозможно сохранить маяк!');
         }
       });
   }

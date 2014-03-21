@@ -25,23 +25,23 @@
                     <div class="col-md-6">
                         <legend><h4>Условие сценария</h4></legend>
                         <div class="form-group">
-                            <select class="form-control" id="event" multiple="true" placeholder="Событие">
-                                <option></option>
+                             <label for="event">Посетитель</label>
+                            <select class="form-control" id="event" placeholder="подходит/отходит">
                                 {{#each events}}
                                 <option value="{{code}}">{{label}}</option>
                                 {{/each}}
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="proximity" multiple="true" placeholder="Расстояние">
-                                <option></option>
+                            <label for="event">на расстояние</label>
+                            <select class="form-control" id="proximity" placeholder="расстояние до маяка">
                                 {{#each proximities}}
                                 <option value="{{code}}">{{label}}</option>
                                 {{/each}}
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="beacons">Теги маячков</label>
+                            <label for="beacons">к следующим маячкам</label>
                             <select class="form-control" id="beacons" multiple="true" placeholder="Теги маячков">
                                 {{#each tags}}
                                 <option value="{{name}}">{{name}}</option>
@@ -52,17 +52,10 @@
                     <div class="col-md-6">
                         <legend><h4>Действие</h4></legend>
                         <div class="form-group">
-                            <label for="message">Сообщение</label>
-                            <select class="form-control" id="message" placeholder="Сообщение">
-                                {{#if message}}
-                                <option value="{{message}}" selected="true">{{messageInfo}}</option>
-                                {{else}}
-                                <option></option>
-                                {{/if}}
-                                {{#each messages}}
-                                <option value="{{_id}}">{{text}}</option>
-                                {{/each}}
-                            </select>
+                            <label for="message">Сообщение для посетителей</label>
+                            <div class="form-group">
+                                <input class="form-control" id="message" placeholder="Ваше сообщение для посетителей" value="{{message}}">
+                            </div>
                         </div>
                     </div>
                 </div>

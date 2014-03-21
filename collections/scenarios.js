@@ -11,19 +11,16 @@ Meteor.methods({
     var user = Meteor.user();
 
     if (!user){
-      throw new Meteor.Error(401,'You need to login to edit scenarios!');
+      throw new Meteor.Error(401,'Вам нужно залогиниться чтобы редактировать сценарии!');
     }
 
     if (!scenario.name ||
         !scenario.message ||
         (scenario.beacons.length===0) ||
         (scenario.proximity.length===0) ||
-        (scenario.event.length===0) ||
-        !scenario.frequency ||
-        !scenario.start ||
-        !scenario.end
+        (scenario.event.length===0)
        ){
-        throw new Meteor.Error(422,'Please fill in required fields!');
+        throw new Meteor.Error(422,'Пожалуйста, заполните все необходимые поля!');
     }
 
     var data = _.extend(_.pick(scenario,'name','message','beacons','proximity','event','frequency','start','end','active'), {
@@ -34,7 +31,7 @@ Meteor.methods({
     if (scenario._id){
       Scenarios.update(scenario._id,{$set:data},function (error){
         if (error){
-          throw new Meteor.Error(500, 'Can\'t save scenario data!');
+          throw new Meteor.Error(500, 'Ошибка: невозможно сохранить сценарий :(!');
         }
       });
     }else{

@@ -21,14 +21,12 @@ Template.locationsList.events({
   'click .location-item': function(e){
     e.preventDefault();
     if ($(e.target).hasClass('location-item-remove')){
-      if (confirm("Вы действительно хотите удалить это место?")){
+      if (confirm("Вы действительно хотите удалить это место? Все маячки, связанные с этим местом так же будут удалены!")){
         Locations.remove({_id:e.currentTarget.id}, function(error){
           if (error){
               alert(error.reason);
             }
         });
-        //gmaps.removeMarker(e.currentTarget.id);
-        //gmaps.calcBounds();
       }
     }else{
       gmaps.centerMarker(e.currentTarget.id);

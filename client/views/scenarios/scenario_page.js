@@ -1,7 +1,4 @@
 Template.scenarioPage.rendered = function (){
-    $('#message').select2({
-        allowClear: false
-    });
 
     $('#beacons').select2({
         allowClear: false
@@ -33,7 +30,6 @@ Template.scenarioPage.rendered = function (){
 
     var data = this.data;
 
-
     $(function () {
         $('#start_dp').datetimepicker({
              language: 'ru',
@@ -55,17 +51,6 @@ Template.scenarioPage.rendered = function (){
 }
 
 Template.scenarioPage.helpers({
-    messages: function(){
-        return Messages.find();
-    },
-    messageInfo: function(){
-        var message = Messages.findOne(this.message);
-        if (message){
-            return message.text;
-        }else{
-            return '';
-        }
-    },
     tags: function(){
         return Tags.find();
     },
@@ -108,8 +93,9 @@ Template.scenarioPage.events({
         var scenario = {
             name: $(e.target).find('[id=name]').val(),
             beacons: [],
-            proximity: [],
-            event: [],
+            proximity: $(e.target).find('[id=proximity]').val(),
+            event: $(e.target).find('[id=event]').val(),
+            message: $(e.target).find('[id=message]').val(),
             frequency: $(e.target).find('[id=frequency]').val(),
             start: $(e.target).find('[id=start]').val(),
             end: $(e.target).find('[id=end]').val(),
@@ -121,24 +107,7 @@ Template.scenarioPage.events({
 
         _.each(beacons,function(tag){
             scenario.beacons.push(tag);
-
         });
-
-        var proximity = $(e.target).find('[id=proximity]').val();
-        _.each(proximity,function (p){
-            scenario.proximity.push(p);
-        });
-
-        var event = $(e.target).find('[id=event]').val();
-        _.each(event,function (e){
-            scenario.event.push(e);
-        });
-
-        var message = $(e.target).find('[id=message]').val();
-
-        if (Messages.findOne(message)){
-            scenario.message = message;
-        }
 
         if (scenario.start){
             scenario.start = new Date(scenario.start.replace(/(\d{2})\.(\d{2})\.(\d{4})/,'$3-$2-$1'));

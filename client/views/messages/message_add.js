@@ -1,7 +1,7 @@
 Template.messageNewPage.events({
     'click #delete':function(e){
       e.preventDefault();
-      if (confirm("Are you realy want to delete this message?")){
+      if (confirm("Вы действительно хотите удалить это сообщение?")){
         Messages.remove({_id:this._id}, function(error){
           if (error){
               alert(error.reason);

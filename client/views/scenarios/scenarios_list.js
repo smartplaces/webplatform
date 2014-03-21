@@ -3,27 +3,28 @@ Template.scenariosList.helpers({
         return Scenarios.find();
   },
 
-  messageInfo : function (){
-    var message = Messages.findOne(this.message);
-    if (message){
-        return message.text;
+  period: function (){
+    if (this.start){
+      if (this.end){
+        return 'с '+commonFormatDate.call(this, this.start)+' по '+ commonFormatDate.call(this, this.end);
+      }else{
+        return 'с '+commonFormatDate.call(this, this.start);
+      }
     }else{
-        return '';
+      if (this.end){
+        return 'по '+ commonFormatDate(this, this.end);
+      }else{
+        return 'без ограничений по времени';
+      }
     }
-  },
 
-  formatDate : function (date){
-    if (this[date])
-      return moment(this[date]).format('DD.MM.YYYY');
-    else
-      return ''
   },
 
   isActive: function (){
     if (this.active){
-      return 'Yes';
+      return 'Да';
     }else{
-      return 'No';
+      return 'Нет';
     }
   },
 
@@ -33,10 +34,10 @@ Template.scenariosList.helpers({
 
     if (type === 'event'){
       col = EVENTS;
-      code = this;
+      code = this.event;
     }else if (type === 'proximity'){
       col = PROXIMITIES;
-      code = this;
+      code = this.proximity;
     }else if (type === 'frequency'){
       col = FREQUENCIES;
       code = this.frequency;

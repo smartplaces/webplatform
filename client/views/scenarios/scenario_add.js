@@ -1,7 +1,4 @@
 Template.scenarioNewPage.rendered = function (){
-    $('#message').select2({
-        allowClear: false
-    });
 
     $('#beacons').select2({
         allowClear: false
@@ -10,23 +7,29 @@ Template.scenarioNewPage.rendered = function (){
     if (this.data.beacons)
         $('#beacons').val(this.data.beacons).trigger('change');
 
+
     $('#proximity').select2({
         allowClear: false
     });
 
+
     if (this.data.proximity)
         $('#proximity').val(this.data.proximity).trigger('change');
+
 
     $('#event').select2({
         allowClear: false
     });
 
+
     if (this.data.event)
         $('#event').val(this.data.event).trigger('change');
+
 
     $('#frequency').select2({
         allowClear: false
     });
+
 
     if (this.data.frequency)
         $('#frequency').val(this.data.frequency).trigger('change');
@@ -108,8 +111,9 @@ Template.scenarioNewPage.events({
         var scenario = {
             name: $(e.target).find('[id=name]').val(),
             beacons: [],
-            proximity: [],
-            event: [],
+            proximity: $(e.target).find('[id=proximity]').val(),
+            event: $(e.target).find('[id=event]').val(),
+            message: $(e.target).find('[id=message]').val(),
             frequency: $(e.target).find('[id=frequency]').val(),
             start: $(e.target).find('[id=start]').val(),
             end: $(e.target).find('[id=end]').val(),
@@ -124,21 +128,6 @@ Template.scenarioNewPage.events({
 
         });
 
-        var proximity = $(e.target).find('[id=proximity]').val();
-        _.each(proximity,function (p){
-            scenario.proximity.push(p);
-        });
-
-        var event = $(e.target).find('[id=event]').val();
-        _.each(event,function (e){
-            scenario.event.push(e);
-        });
-
-        var message = $(e.target).find('[id=message]').val();
-
-        if (Messages.findOne(message)){
-            scenario.message = message;
-        }
 
         if (scenario.start){
             scenario.start = new Date(scenario.start.replace(/(\d{2})\.(\d{2})\.(\d{4})/,'$3-$2-$1'));
