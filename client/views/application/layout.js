@@ -12,8 +12,10 @@ Template.layout.helpers({
     var profile = Meteor.user().profile;
     if (profile && profile.firstName && profile.lastName){
       return profile.firstName+" "+profile.lastName;
-    }else{
+    }else if (Meteor.user().emails && Meteor.user().emails.length > 0){
       return Meteor.user().emails[0].address;
+    }else{
+      return "Профиль";
     }
   }
 });
