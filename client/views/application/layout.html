@@ -18,25 +18,28 @@
                     <li><a href="#">Аналитика</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    {{#if isLoggedIn}}
                     <li>
-                        <a href="#">{{loginButtons}}}</a>
+                      <a href="/profile">{{username}}</a>
                     </li>
+                    <li>
+                      <a href="/sign-out">Выход</a>
+                    </li>
+                    {{else}}
+                    <li>
+                      <a href="/sign-in">Вход</a>
+                    </li>
+                    <li>
+                      <a href="/sign-up">Регистрация</a>
+                    </li>
+                    {{/if}}
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="container">
-
-        <ul class="nav nav-tabs">
-            <li><a href="{{pathFor 'locations'}}">Места</a></li>
-            <li><a href="{{pathFor 'beacons'}}">Маячки</a></li>
-            <li><a href="{{pathFor 'messages'}}">Сообщения</a></li>
-            <li><a href="{{pathFor 'scenarios'}}">Сценарии</a></li>
-        </ul>
-
-        {{yield}}
-
+            {{yield}}
     </div>
 
 </template>

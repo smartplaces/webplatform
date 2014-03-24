@@ -13,3 +13,5 @@ accounts-ui-bootstrap-3
 accounts-password
 jquery
 mongo-counter
+accounts-entry
+coffeescript
