@@ -10,10 +10,10 @@ Template.layout.helpers({
 
   username: function() {
     var profile = Meteor.user().profile;
-    if (profile){
+    if (profile && profile.firstName && profile.lastName){
       return profile.firstName+" "+profile.lastName;
     }else{
-      return "";
+      return Meteor.user().emails[0].address;
     }
   }
 });
