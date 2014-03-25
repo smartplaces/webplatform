@@ -1,0 +1,24 @@
+<template name="couponEditor">
+    <h2>Купон</h2>
+    <div class="form-group">
+      <input class="form-control" type="text" id="title" placeholder="Заголовок" value="{{title}}"></input>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" id="coupon" placeholder="Купон" value="{{coupon}}"></input>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" id="description" placeholder="Описание" value="{{description}}"></input>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" id="additionalInfo" placeholder="Дополнительная информация" value="{{additionalInfo}}"></input>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" id="code" placeholder="Код" value="{{code}}"></input>
+    </div>
+    <div class="panel-footer text-right">
+        <div class="btn-toolbar" role="toolbar">
+            <a href="{{pathFor 'index'}}" class="btn btn-default">Отмена</a>
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</button>
+        </div>
+    </div>
+</template>
