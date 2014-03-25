@@ -2,11 +2,13 @@
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
+  line-height: normal;
 }
 #pkpass * {
   -webkit-font-smoothing: antialiased;
   padding: 0px;
   margin: 0px;
+  box-sizing: content-box;
 }
 #pkpass .pk-text {
   color: #000000;
