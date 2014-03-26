@@ -8,10 +8,19 @@ Template.couponView.helpers({
   description: function(){
     return Session.get('couponDescription');
   },
-  additionalInfo: function(){
-    return Session.get('couponAdditionalInfo');
+  addInfoLabel: function(){
+    return Session.get('couponAddInfoLabel');
+  },
+  addInfoValue: function(){
+    return Session.get('couponAddInfoValue');
   },
   code: function(){
     return Session.get('couponCode');
+  },
+  logo: function(){
+    return Session.get('couponLogo');
+  },
+  banner: function(){
+    return Session.get('couponBanner');
   }
 });

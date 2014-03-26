@@ -17,3 +17,7 @@ Meteor.publish('messages', function(){
 Meteor.publish('scenarios', function(){
   return Scenarios.find({userId:this.userId});
 });
+
+Meteor.publish('coupons', function(){
+  return Coupons.find({userId:this.userId});
+});

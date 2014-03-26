@@ -1,24 +1,82 @@
 <template name="couponEditor">
     <h2>Купон</h2>
     <div class="form-group">
+      <label for="title">Заголовок</label>
       <input class="form-control" type="text" id="title" placeholder="Заголовок" value="{{title}}"></input>
     </div>
+    <form id="logoUpload" action="https://spru.s3.amazonaws.com" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="key" value="uploads/{{userId}}/${filename}">
+      <input type="hidden" name="AWSAccessKeyId" value="{{key}}">
+      <input type="hidden" name="acl" value="public-read">
+      <input type="hidden" name="success_action_status" value="201">
+      <input type="hidden" name="success_action_redirect" value="/">
+      <input type="hidden" name="policy" value="{{policy}}">
+      <input type="hidden" name="signature" value="{{signature}}">
+      <div class="form-group">
+        <label for="logo">Лого</label>
+        <input class="form-control" type="file" id="file" name="file" placeholder="Лого" value="{{logo}}"></input>
+        <div class="progress progress-striped active">
+          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
+            <span class="sr-only">0% Complete</span>
+          </div>
+        </div>
+      </div>
+    </form>
+    <form id="bannerUpload" action="https://spru.s3.amazonaws.com" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="key" value="uploads/{{userId}}/${filename}">
+      <input type="hidden" name="AWSAccessKeyId" value="{{key}}">
+      <input type="hidden" name="acl" value="public-read">
+      <input type="hidden" name="success_action_status" value="201">
+      <input type="hidden" name="success_action_redirect" value="/">
+      <input type="hidden" name="policy" value="{{policy}}">
+      <input type="hidden" name="signature" value="{{signature}}">
+      <div class="form-group">
+        <label for="banner">Банер</label>
+        <input class="form-control" type="file" id="file" name="file" placeholder="Банер" value="{{banner}}"></input>
+      </div>
+      <div class="progress progress-striped active">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
+          <span class="sr-only">0% Complete</span>
+        </div>
+      </div>
+    </form>
     <div class="form-group">
+      <label for="bgColor">Цвет фона</label>
+      <input class="form-control" type="color" id="bgColor" placeholder="Цвет фона" value="{{bgColor}}"></input>
+    </div>
+    <div class="form-group">
+      <label for="textColor">Цвет текста</label>
+      <input class="form-control" type="color" id="textColor" placeholder="Цвет текста" value="{{textColor}}"></input>
+    </div>
+    <div class="form-group">
+      <label for="bgColor">Цвет текста доп. информации</label>
+      <input class="form-control" type="color" id="addInfotextColor" placeholder="Цвет текста доп. информации" value="{{addInfotextColor}}"></input>
+    </div>
+    <div class="form-group">
+      <label for="coupon">Купон</label>
       <input class="form-control" type="text" id="coupon" placeholder="Купон" value="{{coupon}}"></input>
     </div>
     <div class="form-group">
+      <label for="description">Описание</label>
       <input class="form-control" type="text" id="description" placeholder="Описание" value="{{description}}"></input>
     </div>
     <div class="form-group">
-      <input class="form-control" type="text" id="additionalInfo" placeholder="Дополнительная информация" value="{{additionalInfo}}"></input>
+      <label for="addInfoLabel">Дополнительная информация</label>
+      <input class="form-control" type="text" id="addInfoLabel" placeholder="Дополнительная" value="{{addInfoLabel}}"></input>
+      <br/>
+      <input class="form-control" type="text" id="addInfoValue" placeholder="Информация" value="{{addInfoValue}}"></input>
     </div>
     <div class="form-group">
+      <label for="code">Код</label>
       <input class="form-control" type="text" id="code" placeholder="Код" value="{{code}}"></input>
     </div>
     <div class="panel-footer text-right">
         <div class="btn-toolbar" role="toolbar">
-            <a href="{{pathFor 'index'}}" class="btn btn-default">Отмена</a>
-            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</button>
+            <a href="{{pathFor 'coupons'}}" class="btn btn-default">Отмена</a>
+            <a href="#" class="btn btn-primary" id="save"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</a>
+            {{#if _id}}
+            <a href="#" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
+            {{/if}}
         </div>
     </div>
 </template>

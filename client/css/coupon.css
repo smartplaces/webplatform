@@ -43,7 +43,7 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position:50% 50%;
-  background-image: url('logo.png');
+  /* background-image: url('sample-logo.png'); */
 }
 #pkpass .pk-title {
   margin-left: 47px;
@@ -76,7 +76,7 @@
   background-position: 0 50%;
   background-color: transparent;
   background-size: cover;
-  background-image: url('background.png');
+  /* background-image: url('sample-background.png'); */
 }
 #pkpass .pk-strip .pk-text {
   color: #FFFFFF;

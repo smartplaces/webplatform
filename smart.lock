@@ -7,7 +7,9 @@
       "bootstrap-3": {},
       "accounts-ui-bootstrap-3": {},
       "mongo-counter": {},
-      "accounts-entry": {}
+      "accounts-entry": {},
+      "blueimp-file-upload": {},
+      "npm": {}
     },
     "packages": {
       "iron-router": {
@@ -40,6 +42,16 @@
         "tag": "v0.6.2",
         "commit": "56c9b6c064cc0d92a97aa9b53a8f4da050f54c29"
       },
+      "blueimp-file-upload": {
+        "git": "https://github.com/colinsullivan/meteor-blueimp-file-upload.git",
+        "tag": "v9.5.31",
+        "commit": "b76ba316a1dd39c7c595608e66f2f2661dde223c"
+      },
+      "npm": {
+        "git": "https://github.com/arunoda/meteor-npm.git",
+        "tag": "v0.2.6",
+        "commit": "177ab6118de5bf8cffb19481343d5762ff7a2aaf"
+      },
       "just-i18n": {
         "git": "https://github.com/subhog/meteor-just-i18n.git",
         "tag": "v0.1.1",
@@ -49,6 +61,21 @@
         "git": "https://github.com/softwarerero/meteor-accounts-t9n.git",
         "tag": "v0.0.2",
         "commit": "408e3a037114cb72163073110e2121e3d548c1a2"
+      },
+      "jqueryui": {
+        "git": "https://github.com/mizzao/meteor-jqueryui.git",
+        "tag": "v1.10.3r2",
+        "commit": "d54f75cfad37ff8ce6ef9ad49de55738ba921af7"
+      },
+      "blueimp-tmpl": {
+        "git": "https://github.com/colinsullivan/meteor-blueimp-tmpl.git",
+        "tag": "v2.5.31",
+        "commit": "8cb6ddaf17c00a5a549b42441b0c3e8cdec344ec"
+      },
+      "build-fetcher": {
+        "git": "https://github.com/mizzao/meteor-build-fetcher.git",
+        "tag": "v0.1.0",
+        "commit": "e3813b1fc7f5c576e8e1fa4c51ae6f4687780a35"
       }
     }
   }

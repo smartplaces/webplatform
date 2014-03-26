@@ -1,6 +1,6 @@
 Template.couponsList.helpers({
     coupons: function(){
-        return [];
+        return Coupons.find();
     }
 
 });

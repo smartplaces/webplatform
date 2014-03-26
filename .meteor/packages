@@ -15,3 +15,5 @@ jquery
 mongo-counter
 accounts-entry
 coffeescript
+blueimp-file-upload
+npm

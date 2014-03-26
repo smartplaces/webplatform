@@ -5,6 +5,8 @@
     "bootstrap-3": {},
     "accounts-ui-bootstrap-3": {},
     "mongo-counter": {},
-    "accounts-entry": {}
+    "accounts-entry": {},
+    "blueimp-file-upload": {},
+    "npm": {}
   }
 }
