@@ -14,12 +14,12 @@
       <input type="hidden" name="signature" value="{{signature}}">
       <div class="form-group">
         <label for="logo">Лого</label>
-        <input class="form-control" type="file" id="file" name="file" placeholder="Лого" value="{{logo}}"></input>
-        <div class="progress progress-striped active">
+        <input class="form-control" type="file" name="file" placeholder="Лого" value="{{logo}}"></input>
+      </div>
+      <div class="progress progress-striped active">
           <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
             <span class="sr-only">0% Complete</span>
           </div>
-        </div>
       </div>
     </form>
     <form id="bannerUpload" action="https://spru.s3.amazonaws.com" method="post" enctype="multipart/form-data">
@@ -32,7 +32,7 @@
       <input type="hidden" name="signature" value="{{signature}}">
       <div class="form-group">
         <label for="banner">Банер</label>
-        <input class="form-control" type="file" id="file" name="file" placeholder="Банер" value="{{banner}}"></input>
+        <input class="form-control" type="file" name="file" placeholder="Банер" value="{{banner}}"></input>
       </div>
       <div class="progress progress-striped active">
         <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
