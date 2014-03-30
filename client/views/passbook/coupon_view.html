@@ -1,10 +1,10 @@
 <template name="couponView">
 <div id="pkpass">
-    <div class="pk-coupon">
+    <div class="pk-coupon" style="background: linear-gradient(to top, {{bgColor}} 400px, {{bgColor2}} 450px)">
         <div class="pk-header">
             <div class="pk-logo" style="background-image:url('{{logo}}')"></div>
             <div class="pk-title">
-                <h1 class="pk-text">{{title}}</h1>
+                <h1 class="pk-text" style="color:{{textColor}}">{{title}}</h1>
             </div>
             <div class="pk-header-fields">
                 <span class="pk-label pk-text"></span>
@@ -17,8 +17,8 @@
             <span class="pk-label pk-text">{{description}}</span>
         </div>
         <div class="pk-secondary">
-            <span class="pk-label pk-text">{{addInfoLabel}}</span>
-            <span class="pk-value pk-text">{{addInfoValue}}</span>
+            <span class="pk-label pk-text" style="color:{{addInfoTextColor}}">{{addInfoLabel}}</span>
+            <span class="pk-value pk-text" style="color:{{addInfoTextColor}}">{{addInfoValue}}</span>
         </div>
         <div class="pk-auxiliary"></div>
         <div class="pk-barcode">

@@ -22,5 +22,17 @@ Template.couponView.helpers({
   },
   banner: function(){
     return Session.get('couponBanner');
+  },
+  bgColor: function(){
+    return Session.get('couponBgColor');
+  },
+  bgColor2: function(){
+    return '#dfdfed';
+  },
+  textColor: function(){
+    return Session.get('couponTextColor');
+  },
+  addInfoTextColor: function(){
+    return Session.get('couponAddInfoTextColor');
   }
 });

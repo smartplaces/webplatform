@@ -9,7 +9,7 @@ Coupons.allow({
 Meteor.methods({
   saveCoupon: function(coupon){
     var user = Meteor.user();
-    var data = _.extend(_.pick(coupon,'title','coupon','description','addInfoLabel','addInfoValue','code','logo','banner'), {
+    var data = _.extend(_.pick(coupon,'title','coupon','description','addInfoLabel','addInfoValue','code','logo','banner','bgColor','textColor','addInfoTextColor'), {
       userId: user._id,
       updated: new Date().getTime()
     });

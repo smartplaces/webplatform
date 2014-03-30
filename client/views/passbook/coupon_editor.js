@@ -19,6 +19,11 @@ Template.couponEditor.rendered=function(){
   Session.set('couponCode',(this.data._id)?this.data.code:'Код');
   Session.set('couponLogo',(this.data._id)?this.data.logo:'/sample-logo.png');
   Session.set('couponBanner',(this.data._id)?this.data.banner:'/sample-background.png');
+  Session.set('couponBgColor',(this.data._id)?this.data.bgColor:'');
+  Session.set('couponTextColor',(this.data._id)?this.data.textColor:'');
+  Session.set('couponAddInfoTextColor',(this.data._id)?this.data.addInfoTextColor:'');
+  //Session.set('logoFilePrefix',(new Date()).getTime());
+  //Session.set('bannerFilePrefix',(new Date()).getTime()+1);
 
   Meteor.call('encodePolicy',policy,function(err,pdata){
     if (err){
@@ -95,6 +100,16 @@ Template.couponEditor.rendered=function(){
         });
       }
   });
+
+  $('.bgColor').colorpicker({format:'hex'}).on('changeColor', function(ev){
+    Session.set('couponBgColor',ev.color.toHex());
+  });
+  $('.textColor').colorpicker({format:'hex'}).on('changeColor', function(ev){
+    Session.set('couponTextColor',ev.color.toHex());
+  });
+  $('.addInfoTextColor').colorpicker({format:'hex'}).on('changeColor', function(ev){
+    Session.set('couponAddInfoTextColor',ev.color.toHex());
+  });
 };
 
 Template.couponEditor.helpers({
@@ -109,6 +124,12 @@ Template.couponEditor.helpers({
   },
   'userId': function(){
     return Meteor.userId();
+  },
+  'logoFilePrefix': function(){
+    return (new Date()).getTime();
+  },
+  'bannerFilePrefix': function(){
+    return (new Date()).getTime();
   }
 });
 

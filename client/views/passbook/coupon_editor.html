@@ -4,7 +4,7 @@
             <label for="logoUpload" class="col-sm-3 control-label">Логотип</label>
             <div class="col-sm-9">
                 <form id="logoUpload" action="https://spru.s3.amazonaws.com" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="key" value="uploads/{{userId}}/${filename}">
+                    <input type="hidden" name="key" value="uploads/{{userId}}/{{logoFilePrefix}}_${filename}">
                     <input type="hidden" name="AWSAccessKeyId" value="{{key}}">
                     <input type="hidden" name="acl" value="public-read">
                     <input type="hidden" name="success_action_status" value="201">
@@ -30,7 +30,7 @@
             <label for="bannerUpload" class="col-sm-3 control-label">Банер</label>
             <div class="col-sm-9">
                 <form id="bannerUpload" action="https://spru.s3.amazonaws.com" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="key" value="uploads/{{userId}}/${filename}">
+                    <input type="hidden" name="key" value="uploads/{{userId}}/{{bannerFilePrefix}}_${filename}">
                     <input type="hidden" name="AWSAccessKeyId" value="{{key}}">
                     <input type="hidden" name="acl" value="public-read">
                     <input type="hidden" name="success_action_status" value="201">
@@ -77,21 +77,31 @@
             </div>
         </div>
         <div class="form-group">
+
             <label for="bgColor" class="col-sm-3 control-label">Цвет фона</label>
             <div class="col-sm-9">
-                <input class="form-control" type="color" id="bgColor" placeholder="Цвет фона" value="{{bgColor}}">
+                <div class="input-group bgColor">
+                <input class="form-control" type="text" id="bgColor" placeholder="Цвет фона" value="{{bgColor}}">
+                <span class="input-group-addon"><i></i></span>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label for="textColor" class="col-sm-3 control-label">Цвет текста</label>
             <div class="col-sm-9">
-                <input class="form-control" type="color" id="textColor" placeholder="Цвет текста" value="{{textColor}}">
+                <div class="input-group textColor">
+                <input class="form-control" type="text" id="textColor" placeholder="Цвет текста" value="{{textColor}}">
+                <span class="input-group-addon"><i></i></span>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label for="addInfotextColor" class="col-sm-3 control-label">Цвет меток</label>
             <div class="col-sm-9">
-                <input class="form-control" type="color" id="addInfotextColor" placeholder="Цвет текста доп. информации" value="{{addInfotextColor}}">
+                <div class="input-group addInfoTextColor">
+                <input class="form-control" type="text" id="addInfoTextColor" placeholder="Цвет меток" value="{{addInfoTextColor}}">
+                <span class="input-group-addon"><i></i></span>
+                </div>
             </div>
         </div>
     </div>

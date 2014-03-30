@@ -24,7 +24,10 @@ Template.couponPage.events({
       addInfoValue: Session.get('couponAddInfoValue'),
       code: Session.get('couponCode'),
       logo: Session.get('couponLogo'),
-      banner: Session.get('couponBanner')
+      banner: Session.get('couponBanner'),
+      bgColor:Session.get('couponBgColor'),
+      textColor:Session.get('couponTextColor'),
+      addInfoTextColor:Session.get('couponAddInfoTextColor')
     };
 
     if (this._id){
