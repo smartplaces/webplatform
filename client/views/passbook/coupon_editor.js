@@ -11,19 +11,17 @@ var policy = {
 };
 
 Template.couponEditor.rendered=function(){
-  Session.set('couponTitle',(this.data._id)?this.data.title:'Заголовок');
-  Session.set('couponCoupon',(this.data._id)?this.data.coupon:'Купон');
-  Session.set('couponDescription',(this.data._id)?this.data.description:'Описание');
-  Session.set('couponAddInfoLabel',(this.data._id)?this.data.addInfoLabel:'Дополнительная');
-  Session.set('couponAddInfoValue',(this.data._id)?this.data.addInfoValue:'Информация');
-  Session.set('couponCode',(this.data._id)?this.data.code:'Код');
-  Session.set('couponLogo',(this.data._id)?this.data.logo:'/sample-logo.png');
-  Session.set('couponBanner',(this.data._id)?this.data.banner:'/sample-background.png');
-  Session.set('couponBgColor',(this.data._id)?this.data.bgColor:'');
-  Session.set('couponTextColor',(this.data._id)?this.data.textColor:'');
-  Session.set('couponAddInfoTextColor',(this.data._id)?this.data.addInfoTextColor:'');
-  //Session.set('logoFilePrefix',(new Date()).getTime());
-  //Session.set('bannerFilePrefix',(new Date()).getTime()+1);
+  Session.set('couponTitle',(this.data && this.data._id)?this.data.title:'Заголовок');
+  Session.set('couponCoupon',(this.data && this.data._id)?this.data.coupon:'Купон');
+  Session.set('couponDescription',(this.data && this.data._id)?this.data.description:'Описание');
+  Session.set('couponAddInfoLabel',(this.data && this.data._id)?this.data.addInfoLabel:'Дополнительная');
+  Session.set('couponAddInfoValue',(this.data && this.data._id)?this.data.addInfoValue:'Информация');
+  Session.set('couponCode',(this.data && this.data._id)?this.data.code:'Код');
+  Session.set('couponLogo',(this.data && this.data._id)?this.data.logo:'/sample-logo.png');
+  Session.set('couponBanner',(this.data && this.data._id)?this.data.banner:'/sample-background.png');
+  Session.set('couponBgColor',(this.data && this.data._id)?this.data.bgColor:'');
+  Session.set('couponTextColor',(this.data && this.data._id)?this.data.textColor:'');
+  Session.set('couponAddInfoTextColor',(this.data && this.data._id)?this.data.addInfoTextColor:'');
 
   Meteor.call('encodePolicy',policy,function(err,pdata){
     if (err){
