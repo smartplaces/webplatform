@@ -18,10 +18,10 @@ Template.couponView.helpers({
     return Session.get('couponCode');
   },
   logo: function(){
-    return Session.get('couponLogo');
+    return Logos.findOne(Session.get('couponLogo'));
   },
   banner: function(){
-    return Session.get('couponBanner');
+    return Banners.findOne(Session.get('couponBanner'));
   },
   bgColor: function(){
     return Session.get('couponBgColor');

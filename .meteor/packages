@@ -16,3 +16,6 @@ accounts-entry
 coffeescript
 blueimp-file-upload
 npm
+collectionFS
+cfs-filesystem
+cfs-graphicsmagick

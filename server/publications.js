@@ -21,3 +21,15 @@ Meteor.publish('scenarios', function(){
 Meteor.publish('coupons', function(){
   return Coupons.find({userId:this.userId});
 });
+
+Meteor.publish('logos', function(){
+  return Logos.find({userId:this.userId});
+});
+
+Meteor.publish('banners', function(){
+  return Banners.find({userId:this.userId});
+});
+
+Meteor.publish('passes', function(){
+  return Passes.find({userId:this.userId});
+});

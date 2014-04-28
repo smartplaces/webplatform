@@ -11,18 +11,22 @@ var policy = {
 };
 
 Template.couponEditor.rendered=function(){
-  Session.set('couponTitle',(this.data && this.data._id)?this.data.title:'Заголовок');
-  Session.set('couponCoupon',(this.data && this.data._id)?this.data.coupon:'Купон');
-  Session.set('couponDescription',(this.data && this.data._id)?this.data.description:'Описание');
-  Session.set('couponAddInfoLabel',(this.data && this.data._id)?this.data.addInfoLabel:'Дополнительная');
-  Session.set('couponAddInfoValue',(this.data && this.data._id)?this.data.addInfoValue:'Информация');
-  Session.set('couponCode',(this.data && this.data._id)?this.data.code:'Код');
-  Session.set('couponLogo',(this.data && this.data._id)?this.data.logo:'/sample-logo.png');
-  Session.set('couponBanner',(this.data && this.data._id)?this.data.banner:'/sample-background.png');
+  $('.progress').hide();
+
+  Session.set('couponTitle',(this.data && this.data._id)?this.data.title:'!Заголовок');
+  Session.set('couponCoupon',(this.data && this.data._id)?this.data.coupon:'!Купон');
+  Session.set('couponDescription',(this.data && this.data._id)?this.data.description:'!Описание');
+  Session.set('couponAddInfoLabel',(this.data && this.data._id)?this.data.addInfoLabel:'!Дополнительная');
+  Session.set('couponAddInfoValue',(this.data && this.data._id)?this.data.addInfoValue:'!Информация');
+  Session.set('couponCode',(this.data && this.data._id)?this.data.code:'!Код - 777 - 555');
+
+  Session.set('couponLogo',(this.data && this.data._id)?this.data.logo:'');
+  Session.set('couponBanner',(this.data && this.data._id)?this.data.banner:'');
   Session.set('couponBgColor',(this.data && this.data._id)?this.data.bgColor:'');
   Session.set('couponTextColor',(this.data && this.data._id)?this.data.textColor:'');
   Session.set('couponAddInfoTextColor',(this.data && this.data._id)?this.data.addInfoTextColor:'');
 
+  /*
   Meteor.call('encodePolicy',policy,function(err,pdata){
     if (err){
       alert("Can't encode s3 policy!");
@@ -36,9 +40,9 @@ Template.couponEditor.rendered=function(){
       Session.set('signature',sdata);
     });
   });
+*/
 
-  $('.progress').hide();
-
+/*
   $('#logoUpload').fileupload({
       //forceIframeTransport: true,
       autoUpload: true,
@@ -98,14 +102,14 @@ Template.couponEditor.rendered=function(){
         });
       }
   });
-
-  $('.bgColor').colorpicker({format:'hex'}).on('changeColor', function(ev){
+*/
+  $('.bgColor').colorpicker({format:'rgb'}).on('changeColor', function(ev){
     Session.set('couponBgColor',ev.color.toHex());
   });
-  $('.textColor').colorpicker({format:'hex'}).on('changeColor', function(ev){
+  $('.textColor').colorpicker({format:'rgb'}).on('changeColor', function(ev){
     Session.set('couponTextColor',ev.color.toHex());
   });
-  $('.addInfoTextColor').colorpicker({format:'hex'}).on('changeColor', function(ev){
+  $('.addInfoTextColor').colorpicker({format:'rgb'}).on('changeColor', function(ev){
     Session.set('couponAddInfoTextColor',ev.color.toHex());
   });
 };
@@ -129,6 +133,7 @@ Template.couponEditor.helpers({
   'bannerFilePrefix': function(){
     return (new Date()).getTime();
   }
+
 });
 
 Template.couponEditor.events({
@@ -149,5 +154,27 @@ Template.couponEditor.events({
   },
   'change #code': function(e){
     Session.set('couponCode',$(event.target).val());
+  },
+  'change #logoUpload': function(e){
+    var fsFile = new FS.File(e.target.files[0]);
+    fsFile.userId = Meteor.userId();
+    Logos.insert(fsFile,function(err,fileObj){
+      if (err){
+        console.log(err);
+      }else{
+        Session.set('couponLogo',fileObj._id);
+      }
+    });
+  },
+  'change #bannerUpload': function(e){
+    var fsFile = new FS.File(e.target.files[0]);
+    fsFile.userId = Meteor.userId();
+    Banners.insert(fsFile,function(err,fileObj){
+      if (err){
+        console.log(err);
+      }else{
+        Session.set('couponBanner',fileObj._id);
+      }
+    });
   }
 });

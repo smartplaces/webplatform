@@ -3,6 +3,8 @@
         <div class="form-group">
             <label for="logoUpload" class="col-sm-3 control-label">Логотип</label>
             <div class="col-sm-9">
+                <input type="file" name="logoUpload" id="logoUpload">
+                <!--
                 <form id="logoUpload" action="https://spru.s3.amazonaws.com" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="key" value="uploads/{{userId}}/{{logoFilePrefix}}_${filename}">
                     <input type="hidden" name="AWSAccessKeyId" value="{{key}}">
@@ -18,6 +20,7 @@
                         </div>
                     </div>
                 </form>
+-->
             </div>
         </div>
         <div class="form-group">
@@ -29,6 +32,8 @@
         <div class="form-group">
             <label for="bannerUpload" class="col-sm-3 control-label">Банер</label>
             <div class="col-sm-9">
+                <input type="file" name="bannerUpload" id="bannerUpload">
+                <!--
                 <form id="bannerUpload" action="https://spru.s3.amazonaws.com" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="key" value="uploads/{{userId}}/{{bannerFilePrefix}}_${filename}">
                     <input type="hidden" name="AWSAccessKeyId" value="{{key}}">
@@ -44,6 +49,7 @@
                         </div>
                     </div>
                 </form>
+-->
             </div>
         </div>
         <div class="form-group">

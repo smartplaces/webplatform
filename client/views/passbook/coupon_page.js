@@ -1,8 +1,15 @@
+Template.couponPage.helpers({
+  pass: function(){
+    return Passes.findOne({couponId:this._id});
+  }
+});
 Template.couponPage.events({
 
   'click #delete': function(e){
       e.preventDefault();
       if (confirm("Вы точно хотите удалить этот купон?")){
+        Logos.remove({_id:this.logo},function(error){if (error) console.log(error);});
+        Banners.remove({_id:this.banner},function(error){if (error) console.log(error);});
         Coupons.remove({_id:this._id}, function(error){
           if (error){
               alert(error.reason);
@@ -40,6 +47,12 @@ Template.couponPage.events({
       }else{
         Router.go('coupons');
       }
+    });
+  },
+  'click #download':function(e){
+    e.preventDefault();
+    Meteor.call('createPass',this._id,function (err,pid){
+      if (err) console.log(err); else alert('Купон сгенерирован!');
     });
   }
 
