@@ -1,7 +1,6 @@
 Banners = new FS.Collection("banners",{
   stores:[
-    new FS.Store.FileSystem("banners",{
-      path: "~/banners",
+    new FS.Store.GridFS("banners",{
       transformWrite: function(fileObj,readStream,writeStream){
         fileObj.copies.banners.name = FS.Utility.setFileExtension(fileObj.copies.banners.name, 'png');
         fileObj.copies.banners.type = 'image/png';

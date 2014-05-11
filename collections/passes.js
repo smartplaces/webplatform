@@ -1,8 +1,6 @@
 Passes = new FS.Collection("passes",{
   stores:[
-    new FS.Store.FileSystem("passes",{
-      path:"~/passes"
-    })
+    new FS.Store.GridFS("passes",{})
   ]
 });
 
@@ -18,6 +16,9 @@ Passes.allow({
 
 Meteor.methods({
   createPass: function(id){
+    console.log('createPass stub');
+    return "none";
+    /*
     if (Meteor.isServer){
       var coupon = Coupons.findOne(id);
       var createTemplate = Meteor.require("passbook");
@@ -91,17 +92,6 @@ Meteor.methods({
       pass.on('end',future.resolver());
       pass.pipe(file);
 
-      /*
-      var w = function(callback){
-        pass.on('end',callback);
-        pass.pipe(file);
-        console.log('Pass generation started.');
-      }
-
-      ws = Meteor._wrapAsync(w);
-
-      ws();*/
-
       future.wait();
       console.log('Pass created!');
 
@@ -113,5 +103,6 @@ Meteor.methods({
       console.log(pid);
       return pid;
     }
+    */
   }
 })

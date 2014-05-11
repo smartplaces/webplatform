@@ -31,6 +31,7 @@ Meteor.methods({
       return coupon._id;
     }else{
       if (isNew && Meteor.isServer){
+        /*
         console.log('Upload default images');
         var fsFile = new FS.File("/home/vagrant/defaults/sample-logo.png");
         fsFile.userId = Meteor.userId();
@@ -40,6 +41,7 @@ Meteor.methods({
         fsFile.userId = Meteor.userId();
         data.banner = Banners.insert(fsFile)._id;
         console.log('Banners: '+data.banner);
+        */
       }
       return Coupons.insert(data);
     }

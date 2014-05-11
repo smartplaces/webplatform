@@ -1,7 +1,6 @@
 Logos = new FS.Collection("logos",{
   stores:[
-    new FS.Store.FileSystem("logos",{
-      path:"~/logos",
+    new FS.Store.GridFS("logos",{
       transformWrite:function(fileObj,readStream,writeStream){
         fileObj.copies.logos.name = FS.Utility.setFileExtension(fileObj.copies.logos.name, 'png');
         fileObj.copies.logos.type = 'image/png';
