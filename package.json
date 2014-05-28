@@ -1,0 +1,22 @@
+{
+  "name": "webplatform",
+  "version": "0.0.1",
+  "description": "SmartPlaces Web App",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smartplaces/webplatform.git"
+  },
+  "author": "Alexander Seliverstov",
+  "license": "Commercial",
+  "bugs": {
+    "url": "https://github.com/smartplaces/webplatform/issues"
+  },
+  "homepage": "https://github.com/smartplaces/webplatform",
+  "engines": {
+    "node": "0.10.x"
+  }
+}
