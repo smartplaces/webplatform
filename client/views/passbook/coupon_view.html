@@ -1,33 +1,33 @@
 <template name="couponView">
 <div id="pkpass">
-    <div class="pk-coupon" style="background: linear-gradient(to top, {{bgColor}} 400px, {{bgColor2}} 450px)">
+    <div class="pk-coupon" style="background: linear-gradient(to top, {{backgroundColor}} 400px, {{backgroundColor2}} 450px)">
         <div class="pk-header">
             {{#with logo}}
-            <div class="pk-logo" style="background-image:url('{{url}}')"></div>
+            <div class="pk-logo" style="background-image:url('{{url store='logos'}}')"></div>
             {{/with}}
             <div class="pk-title">
-                <h1 class="pk-text" style="color:{{textColor}}">{{title}}</h1>
+                <h1 class="pk-text" style="color:{{foregroundColor}}">{{logoText}}</h1>
             </div>
             <div class="pk-header-fields">
                 <span class="pk-label pk-text"></span>
                 <span class="pk-value pk-text"></span>
             </div>
         </div>
-        {{#with banner}}
-        <div class="pk-strip" style="background-image:url('{{url}}')">
-            <span class="pk-value pk-text">{{coupon}}</span>
+        {{#with strip}}
+        <div class="pk-strip" style="background-image:url('{{url store='strips'}}')">
+            <span class="pk-value pk-text">{{primaryFieldValue}}</span>
             <div></div>
-            <span class="pk-label pk-text">{{description}}</span>
+            <span class="pk-label pk-text">{{primaryFieldLabel}}</span>
         </div>
         {{/with}}
         <div class="pk-secondary">
-            <span class="pk-label pk-text" style="color:{{addInfoTextColor}}">{{addInfoLabel}}</span>
-            <span class="pk-value pk-text" style="color:{{addInfoTextColor}}">{{addInfoValue}}</span>
+            <span class="pk-label pk-text" style="color:{{labelColor}}">{{secondaryFieldLabel}}</span>
+            <span class="pk-value pk-text" style="color:{{labelColor}}">{{secondaryFieldValue}}</span>
         </div>
         <div class="pk-auxiliary"></div>
         <div class="pk-barcode">
             <div class="pk-barcode-image"></div>
-            <div class="pk-barcode-alt pk-text">{{code}}</div>
+            <div class="pk-barcode-alt pk-text">{{barcodeMessage}}</div>
         </div>
         <div class="">
         </div>

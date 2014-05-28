@@ -1,20 +1,14 @@
-Logos = new FS.Collection("logos",{
+/*
+Icons = new FS.Collection("icons",{
   stores:[
-    new FS.Store.GridFS("logos",{
-      /*
+    new FS.Store.GridFS("icons",{
+
       region: "us-east-1",
       accessKeyId: 'AKIAJRES2MWYG6QNSCDQ',
       secretAccessKey: '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',
       bucket: 'spru',
       ACL: 'public-read',
-      */
-      transformWrite:function(fileObj,readStream,writeStream){
-        fileObj.extension('png', {store: "logos"});
-        fileObj.type('image/png', {store: "logos"});
-        gm(readStream).resize(73,71).stream('PNG').pipe(writeStream);
-      }
-    }),
-    new FS.Store.GridFS("icons",{
+
       transformWrite:function(fileObj,readStream,writeStream){
         fileObj.extension('png', {store: "icons"});
         fileObj.type('image/png', {store: "icons"});
@@ -37,7 +31,7 @@ Logos = new FS.Collection("logos",{
   }
 });
 
-Logos.allow({
+Icons.allow({
     insert: loggedIn,
     update: loggedIn,
     remove: loggedIn,
@@ -45,5 +39,4 @@ Logos.allow({
         return true;
     }
 });
-
-
+*/

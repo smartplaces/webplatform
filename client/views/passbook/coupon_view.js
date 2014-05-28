@@ -1,38 +1,52 @@
 Template.couponView.helpers({
-  title: function(){
-    return Session.get('couponTitle');
+  logoText: function(){
+    return Session.get('coupon.logoText');
   },
-  coupon: function(){
-    return Session.get('couponCoupon');
+  primaryFieldValue: function(){
+    return Session.get('coupon.primaryFieldValue');
   },
-  description: function(){
-    return Session.get('couponDescription');
+  primaryFieldLabel: function(){
+    return Session.get('coupon.primaryFieldLabel');
   },
-  addInfoLabel: function(){
-    return Session.get('couponAddInfoLabel');
+  secondaryFieldLabel: function(){
+    return Session.get('coupon.secondaryFieldLabel');
   },
-  addInfoValue: function(){
-    return Session.get('couponAddInfoValue');
+  secondaryFieldValue: function(){
+    return Session.get('coupon.secondaryFieldValue');
   },
-  code: function(){
-    return Session.get('couponCode');
+  barcodeMessage: function(){
+    return Session.get('coupon.barcodeMessage');
   },
   logo: function(){
-    return Logos.findOne(Session.get('couponLogo'));
+    var logo = Logos.findOne(Session.get('coupon.logo'));
+    if (logo){
+      return logo;
+    }else{
+      return {
+        url: function(){return '/sample-logo.png';}
+      }
+    }
   },
-  banner: function(){
-    return Banners.findOne(Session.get('couponBanner'));
+  strip: function(){
+    var strip = Strips.findOne(Session.get('coupon.strip'));
+    if (strip){
+      return strip;
+    }else{
+      return {
+        url: function(){return '/sample-background.png';}
+      };
+    }
   },
-  bgColor: function(){
-    return Session.get('couponBgColor');
+  backgroundColor: function(){
+    return Session.get('coupon.backgroundColor');
   },
-  bgColor2: function(){
+  backgroundColor2: function(){
     return '#dfdfed';
   },
-  textColor: function(){
-    return Session.get('couponTextColor');
+  foregroundColor: function(){
+    return Session.get('coupon.foregroundColor');
   },
-  addInfoTextColor: function(){
-    return Session.get('couponAddInfoTextColor');
+  labelColor: function(){
+    return Session.get('coupon.labelColor');
   }
 });

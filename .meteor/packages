@@ -19,3 +19,6 @@ collectionFS
 cfs-filesystem
 cfs-graphicsmagick
 cfs-gridfs
+http
+cfs-s3
+cfs-ui

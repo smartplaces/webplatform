@@ -9,6 +9,8 @@
     "npm": {},
     "collectionFS": {},
     "cfs-graphicsmagick": {},
-    "cfs-filesystem": {}
+    "cfs-filesystem": {},
+    "cfs-s3": {},
+    "cfs-ui": {}
   }
 }

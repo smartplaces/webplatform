@@ -2,14 +2,16 @@
   {{>tabs}}
   <div class="bs-callout bs-callout-info"><h4>Создайте купоны, которые будут показаны по заданным сценариям</h4><p>Для редактирования или удаления купона, нажмите на него в списке.</p></div>
 
-  <p><a class="btn btn-primary" href="#" role="button" id="new"><span class="glyphicon glyphicon-plus"></span> Добавить купон</a></p>
+  <p><a class="btn btn-primary" href="{{pathFor 'newcoupon'}}" role="button" id="new"><span class="glyphicon glyphicon-plus"></span> Добавить купон</a></p>
 
   <div class="list-group">
       {{#each coupons}}
-      <a href="{{pathFor 'coupon'}}" class="list-group-item">
-          <h4 class="list-group-item-heading">{{title}}</h4>
-          <p class="list-group-item-text">{{description}}</p>
-      </a>
+          <a href="{{pathFor 'coupon'}}" class="list-group-item">
+              {{#with pass}}
+              <h4 class="list-group-item-heading">{{logoText}}</h4>
+              <p class="list-group-item-text">{{primaryFieldValue}} {{primaryFieldLabel}}</p>
+              {{/with}}
+          </a>
       {{/each}}
   </div>
 </template>
