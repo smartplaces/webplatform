@@ -77,6 +77,8 @@ Meteor.methods({
       if (images != {})
         c.images = images;
 
+      c.updatedAt = new Date().getTime();
+
       Coupons.update(c._id,c,function (error){
         if (error){
           throw new Meteor.Error(500, 'Ошибка: невозможно сохранить купон :(!');
@@ -118,7 +120,7 @@ Meteor.methods({
   saveEmpty: function(){
     var data = {
       userId: Meteor.user()._id,
-      updated: new Date().getTime(),
+      updatedAt: new Date().getTime(),
       type : 'coupon',
     };
 
