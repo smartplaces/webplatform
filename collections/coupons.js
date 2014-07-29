@@ -98,6 +98,17 @@ Meteor.methods({
           }
         });
       }
+
+      if (Meteor.isServer){
+        console.log('Send notification to registered devices for pass '+c._id);
+        var url = 'http://sleepy-scrubland-4869.herokuapp.com/passws/notify/'+c.pass.passTypeIdentifier+'/'+c.pass.serialNumber+'?id='+c._id;
+        try{
+          HTTP.get(url);
+        }catch(ex){
+          throw ex;
+        }
+      }
+
       return c._id;
 
     }
