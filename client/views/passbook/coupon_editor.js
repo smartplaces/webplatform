@@ -32,6 +32,7 @@ Template.couponEditor.rendered=function(){
     Session.set('coupon.labelColor',ev.color.toHex());
   });
 
+  Session.set('coupon.notify',false);
 };
 
 Template.couponEditor.helpers({
@@ -77,7 +78,11 @@ Template.couponEditor.events({
     Session.set('coupon.barcodeMessage',$(event.target).val());
   },
   'change #notify' : function (e){
-    Session.set('coupon.notify',$(event.target).val());
+    if ($(event.target).val() && $(event.target).val()!=''){
+      Session.set('coupon.notify',true);
+    }else{
+      Session.set('coupon.notify',false);
+    }
   },
   'change #logo': function(e,t){
     var fsFileL = new FS.File(e.target.files[0]);
