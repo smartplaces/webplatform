@@ -101,13 +101,15 @@ Meteor.methods({
         });
       }
 
-      console.log('Send notification to registered devices for pass '+c._id);
-      var url = 'http://sleepy-scrubland-4869.herokuapp.com/passws/notify/'+c.pass.passTypeIdentifier+'/'+c.pass.serialNumber+'?id='+c._id;
-      try{
-        console.log(url);
-        HTTP.get(url);
-      }catch(ex){
-        console.error(ex);
+      if (coupon.notify){
+        console.log('Send notification to registered devices for pass with id ['+c._id+']');
+        var url = 'http://sleepy-scrubland-4869.herokuapp.com/passws/notify/'+c.pass.passTypeIdentifier+'/'+c.pass.serialNumber+'?id='+c._id;
+        try{
+          console.log('Notification url: '+url);
+          HTTP.get(url);
+        }catch(ex){
+          console.error(ex);
+        }
       }
       return c._id;
 

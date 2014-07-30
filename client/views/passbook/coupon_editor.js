@@ -76,6 +76,9 @@ Template.couponEditor.events({
   'change #barcodeMessage': function(e){
     Session.set('coupon.barcodeMessage',$(event.target).val());
   },
+  'change #notify' : function (e){
+    Session.set('coupon.notify',$(event.target).val());
+  },
   'change #logo': function(e,t){
     var fsFileL = new FS.File(e.target.files[0]);
     var fsFileI = new FS.File(e.target.files[0]);

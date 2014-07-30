@@ -48,7 +48,8 @@ Template.couponPage.events({
       strip:               Session.get('coupon.strip'),
       backgroundColor:     Session.get('coupon.backgroundColor'),
       foregroundColor:     Session.get('coupon.foregroundColor'),
-      labelColor:          Session.get('coupon.labelColor')
+      labelColor:          Session.get('coupon.labelColor'),
+      notify:              Session.get('coupon.notify'),
     };
 
     Meteor.call('saveCoupon',coupon,function(error){
