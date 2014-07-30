@@ -33,9 +33,34 @@ Template.couponEditor.rendered=function(){
   });
 
   Session.set('coupon.notify',false);
+
+  var locationData = [];
+  if (this.data && this.data._id){
+    if (this.data.pass.beacons && this.data.pass.beacons.length > 0){
+      _.each(this.data.pass.beacons,function(b){
+        var loc = Locations.findOne({uuid:b.proximityUUID, major:b.major});
+        locationData.push(loc._id);
+      });
+    }
+  }
+
+  $('#locations').select2({
+      allowClear: true,
+  });
+
+  $("#locations").on("change", function(e) { Session.set('coupon.locations',e.val);});
+
+  $('#locations').val(locationData).trigger('change');
+
+  Session.set('coupon.locations', $('#locations').val());
+
+
 };
 
 Template.couponEditor.helpers({
+  locations: function(){
+    return Locations.find();
+  },
   primaryFieldValue: function(){
     return this.coupon.primaryFields[0].value;
   },
@@ -78,11 +103,7 @@ Template.couponEditor.events({
     Session.set('coupon.barcodeMessage',$(event.target).val());
   },
   'change #notify' : function (e){
-    if ($(event.target).val() && $(event.target).val()!=''){
-      Session.set('coupon.notify',true);
-    }else{
-      Session.set('coupon.notify',false);
-    }
+    Session.set('coupon.notify',$(event.target).is(':checked'));
   },
   'change #logo': function(e,t){
     var fsFileL = new FS.File(e.target.files[0]);

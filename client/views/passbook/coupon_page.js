@@ -50,7 +50,14 @@ Template.couponPage.events({
       foregroundColor:     Session.get('coupon.foregroundColor'),
       labelColor:          Session.get('coupon.labelColor'),
       notify:              Session.get('coupon.notify'),
+      locations:           []
     };
+
+    var locations = Session.get('coupon.locations');
+
+    _.each(locations.toString().split(','),function(location){
+      coupon.locations.push(location);
+    });
 
     Meteor.call('saveCoupon',coupon,function(error){
       if (error){

@@ -78,10 +78,22 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" id="notify"> Отправить оповещение
-                </label>
+            <label for="location" class="col-sm-3 control-label">Уведомления</label>
+            <div class="col-sm-9">
+                 <select class="form-control" id="locations" multiple="true" placeholder="Показывать в ...">
+                     {{#each locations}}
+                     <option value="{{_id}}">{{title}}</option>
+                     {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="notify">Отправить оповещения об изменении купона
+                    </label>
+                </div>
             </div>
         </div>
     </div>

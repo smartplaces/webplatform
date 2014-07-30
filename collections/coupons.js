@@ -21,6 +21,26 @@ Meteor.methods({
       pass.coupon.secondaryFields[0].value = coupon.secondaryFieldValue;
       pass.coupon.secondaryFields[0].label = coupon.secondaryFieldLabel;
 
+      if (coupon.locations.length>0){
+        pass.locations = [];
+        pass.beacons = [];
+        _.each(coupon.locations,function (id){
+          var location = Locations.findOne(id);
+          if (location){
+            pass.locations.push({
+              latitude: location.lat,
+              longitude: location.lng,
+              relevantText: coupon.logoText+ ' рядом с Вами!'
+            });
+            pass.beacons.push({
+              proximityUUID: location.uuid,
+              major: location.major,
+              relevantText: coupon.logoText+ ' рядом с Вами!'
+            });
+          }
+        });
+
+      }
 
       var images = c.images || {};
 
