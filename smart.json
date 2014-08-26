@@ -9,8 +9,7 @@
     "npm": {},
     "collectionFS": {},
     "cfs-graphicsmagick": {},
-    "cfs-filesystem": {},
-    "cfs-s3": {},
-    "cfs-ui": {}
+    "cfs-ui": {},
+    "iron-router-progress": {}
   }
 }

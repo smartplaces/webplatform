@@ -39,7 +39,9 @@ Template.couponEditor.rendered=function(){
     if (this.data.pass.beacons && this.data.pass.beacons.length > 0){
       _.each(this.data.pass.beacons,function(b){
         var loc = Locations.findOne({uuid:b.proximityUUID, major:b.major});
-        locationData.push(loc._id);
+        if (loc){
+          locationData.push(loc._id);
+        }
       });
     }
   }

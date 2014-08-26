@@ -1,12 +1,12 @@
-Meteor.subscribe('beacons');
-Meteor.subscribe('locations');
-Meteor.subscribe('tags');
-Meteor.subscribe('messages');
-Meteor.subscribe('scenarios');
-Meteor.subscribe('coupons');
+//Meteor.subscribe('beacons');
+//Meteor.subscribe('locations');
+//Meteor.subscribe('tags');
+//Meteor.subscribe('messages');
+//Meteor.subscribe('scenarios');
+//Meteor.subscribe('coupons');
 //Meteor.subscribe('icons');
-Meteor.subscribe('logos');
-Meteor.subscribe('strips');
+//Meteor.subscribe('logos');
+//Meteor.subscribe('strips');
 
 Accounts.ui.config({
   passwordSignupFields: 'EMAIL_ONLY'
