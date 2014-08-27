@@ -22,11 +22,10 @@ Meteor.publish('coupons', function(){
   return Coupons.find({userId:this.userId, type:'coupon'});
 });
 
-/*
-Meteor.publish('icons', function(){
-  return Icons.find({userId:this.userId});
+
+Meteor.publish('message_images', function(){
+  return MessageImages.find({userId:this.userId});
 });
-*/
 
 Meteor.publish('logos', function(){
   return Logos.find({userId:this.userId});
