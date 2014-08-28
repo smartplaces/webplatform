@@ -18,8 +18,5 @@
   "homepage": "https://github.com/smartplaces/webplatform",
   "engines": {
     "node": "0.10.26"
-  },
-  "dependencies":{
-    "fibers": "1.0.0"
   }
 }
