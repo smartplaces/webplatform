@@ -127,3 +127,12 @@ body {
   padding-left: 14px;
   width: 401px;
 }
+
+.carousel-indicators li {
+  border-color: #333333;
+}
+
+.carousel-caption {
+  color: #000000;
+  text-shadow: none;
+}
