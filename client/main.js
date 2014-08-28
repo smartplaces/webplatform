@@ -8,9 +8,11 @@
 //Meteor.subscribe('logos');
 //Meteor.subscribe('strips');
 
+/*
 Accounts.ui.config({
   passwordSignupFields: 'EMAIL_ONLY'
 });
+*/
 
 AccountsEntry.config({
   homeRoute: '/',
