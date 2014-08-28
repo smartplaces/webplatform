@@ -19,5 +19,18 @@ Meteor.publish('scenarios', function(){
 });
 
 Meteor.publish('coupons', function(){
-  return Coupons.find({userId:this.userId});
+  return Coupons.find({userId:this.userId, type:'coupon'});
+});
+
+
+Meteor.publish('message_images', function(){
+  return MessageImages.find({userId:this.userId});
+});
+
+Meteor.publish('logos', function(){
+  return Logos.find({userId:this.userId});
+});
+
+Meteor.publish('strips', function(){
+  return Strips.find({userId:this.userId});
 });

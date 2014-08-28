@@ -126,7 +126,7 @@
   height: 55px;
   margin-bottom: 10.5px;
   background-repeat: no-repeat;
-  background-image: url('sample-barcode.png')
+  background-image: url('/sample-barcode.png')
 }
 #pkpass .pk-barcode-alt {
   text-align: center;

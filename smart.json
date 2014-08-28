@@ -1,12 +1,8 @@
 {
   "packages": {
-    "iron-router": {},
-    "spin": {},
-    "bootstrap-3": {},
-    "accounts-ui-bootstrap-3": {},
-    "mongo-counter": {},
-    "accounts-entry": {},
-    "blueimp-file-upload": {},
-    "npm": {}
+    "collectionfs": {},
+    "cfs-gridfs": {},
+    "cfs-graphicsmagick": {},
+    "cfs-ui": {}
   }
 }

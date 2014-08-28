@@ -18,9 +18,8 @@
                 <div class="modal-footer">
                     <a href="{{pathFor 'coupons'}}" class="btn btn-default">Отмена</a>
                     <a href="#" class="btn btn-primary" id="save"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</a>
-                    {{#if _id}}
                     <a href="#" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
-                    {{/if}}
+                    <a href="{{downloadLink}}" class="btn btn-default" id="download">Скачать</a>
                 </div>
             </div>
         </div>

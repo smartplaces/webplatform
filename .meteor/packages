@@ -4,15 +4,19 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-iron-router
-spin
-bootstrap-3
+sacha:spin@2.0.4
 underscore
-accounts-ui-bootstrap-3
 accounts-password
 jquery
-mongo-counter
-accounts-entry
+mrt:mongo-counter@1.1.0
 coffeescript
-blueimp-file-upload
-npm
+arunoda:npm@0.2.6
+http
+mrt:iron-router-progress@0.4.1
+joshowens:accounts-entry
+collectionfs
+cfs-gridfs
+cfs-graphicsmagick
+cfs-ui
+iron:router
+

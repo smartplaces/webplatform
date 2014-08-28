@@ -20,17 +20,38 @@ Meteor.methods({
 
     var data = _.extend(_.pick(message,'text','url','description'), {
       userId: user._id,
-      updated: new Date().getTime()
+      updated: new Date().getTime(),
+      image: {}
     });
 
+    var image = MessageImages.findOne(message.image);
+
+    if (image){
+      data.image = {
+        _id: image._id,
+        key: image.getFileRecord().copies.message_images.key
+      };
+    }
+
+    var msgId = undefined;
+
     if (message._id){
+      msgId = message._id;
       Messages.update(message._id,{$set:data},function (error){
         if (error){
           throw new Meteor.Error(500, 'Ошибка: невозможно сохранить сообщение :(!');
         }
       });
     }else{
-      Messages.insert(data);
+      msgId = Messages.insert(data);
+    }
+
+    if (image){
+      MessageImages.update(image._id,{$set:{msgId:msgId}}, function (error){
+          if (error){
+            throw new Meteor.Error(500, 'Ошибка: невозможно обновить метаданные для message_image :(!');
+          }
+        });
     }
   }
 });
