@@ -57,40 +57,6 @@ Template.scenarioNewPage.rendered = function (){
     });
 }
 
-Template.scenarioNewPage.helpers({
-    messages: function(){
-        return Messages.find();
-    },
-    messageInfo: function(){
-        var message = Messages.findOne(this.message);
-        if (message){
-            return message.text;
-        }else{
-            return '';
-        }
-    },
-    tags: function(){
-        return Tags.find();
-    },
-    proximities: function(){
-        return PROXIMITIES;
-    },
-
-    events: function(){
-        return EVENTS;
-    },
-    frequencies: function(){
-        return FREQUENCIES;
-    },
-    isChecked: function(){
-        if (this.active || !this._id){
-            return 'checked';
-        }else{
-            return '';
-        }
-    }
-});
-
 Template.scenarioNewPage.events({
   'click #submit2': function(e){
     console.log(e);
@@ -159,4 +125,38 @@ Template.scenarioNewPage.events({
     });
   }
 
+});
+
+Template.scenarioNewPage.helpers({
+    messages: function(){
+        return Messages.find();
+    },
+    messageInfo: function(){
+        var message = Messages.findOne(this.message);
+        if (message){
+            return message.text;
+        }else{
+            return '';
+        }
+    },
+    tags: function(){
+        return Tags.find();
+    },
+    proximities: function(){
+        return PROXIMITIES;
+    },
+
+    events: function(){
+        return EVENTS;
+    },
+    frequencies: function(){
+        return FREQUENCIES;
+    },
+    isChecked: function(){
+        if (this.active || !this._id){
+            return 'checked';
+        }else{
+            return '';
+        }
+    }
 });

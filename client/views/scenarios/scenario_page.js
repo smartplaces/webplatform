@@ -50,29 +50,6 @@ Template.scenarioPage.rendered = function (){
     });
 }
 
-Template.scenarioPage.helpers({
-    tags: function(){
-        return Tags.find();
-    },
-    proximities: function(){
-        return PROXIMITIES;
-    },
-
-    events: function(){
-        return EVENTS;
-    },
-    frequencies: function(){
-        return FREQUENCIES;
-    },
-    isChecked: function(){
-        if (this.active || !this._id){
-            return 'checked';
-        }else{
-            return '';
-        }
-    }
-});
-
 Template.scenarioPage.events({
     'click #delete':function(e){
       e.preventDefault();
@@ -130,4 +107,27 @@ Template.scenarioPage.events({
         });
     }
 
+});
+
+Template.scenarioPage.helpers({
+    tags: function(){
+        return Tags.find();
+    },
+    proximities: function(){
+        return PROXIMITIES;
+    },
+
+    events: function(){
+        return EVENTS;
+    },
+    frequencies: function(){
+        return FREQUENCIES;
+    },
+    isChecked: function(){
+        if (this.active || !this._id){
+            return 'checked';
+        }else{
+            return '';
+        }
+    }
 });
