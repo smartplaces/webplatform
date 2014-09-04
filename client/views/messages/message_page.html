@@ -1,33 +1,69 @@
 <template name="messagePage">
-    <form role="form" style="margin-top: 20px;">
-        <div class="panel panel-primary">
-            <div class="panel-heading"><h4 class="panel-title">Редактирование сообщения <a href="{{pathFor 'messages'}}" class="pull-right">&times;</a></h4></div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <label for="text">Текст сообщения</label>
-                    <input class="form-control" id="text" placeholder="Текст" value="{{text}}">
-                </div>
-                <div class="form-group">
-                    <label for="text">Картинка</label>
-                    <input class="form-control" type="file" id="image" name="image">
-                    {{#with image}}
-                    <img src="{{url store='message_images'}}"/>
-                    {{/with}}
-                </div>
-                <div class="form-group">
-                    <label for="url">Ссылка</label>
-                    <input class="form-control" id="url" placeholder="URL" value="{{url}}">
-                </div>
-                <div class="form-group">
-                    <label for="description">Комментарий для аналитики</label>
-                    <input class="form-control" id="description" placeholder="Комментарий" value="{{description}}">
-                </div>
-            </div>
-            <div class="panel-footer text-right">
-                <div class="btn-toolbar" role="toolbar">
-                    <a href="{{pathFor 'messages'}}" class="btn btn-default">Отмена</a>
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</button>
-                    <a href="#" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
+    <form role="form">
+        <div class="modal" style="position:relative;top:auto;right:auto;left:auto;bottom:auto;z-index:1;display:block;overflow-y:auto;">
+            <div class="modal-dialog modal-lg" style="left:auto;margin-left:auto;margin-right:auto;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Редактирование сообщения <a href="{{pathFor 'messages'}}" class="pull-right">&times;</a></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    <label for="messagetype">Тип сообщения</label>
+                                    <select class="form-control" id="messagetype" placeholder="Тип сообщения">
+                                        <option value="10">Страница</option>
+                                        <option value="20">Переход по ссылке</option>
+                                    </select>
+                                </div>
+                                <div class="type-page-group">
+                                    <div class="form-group">
+                                        <label for="image">Картинка</label>
+                                        <input class="form-control" type="file" id="image" name="image">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="header">Заголовок</label>
+                                        <input class="form-control" id="header" placeholder="Заголовок" value="{{header}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="text">Текст</label>
+                                        <textarea class="form-control" id="text" placeholder="Текст" rows="3">{{text}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="type-url-group">
+                                    <div class="form-group">
+                                        <label for="url">Ссылка</label>
+                                        <input class="form-control" id="url" placeholder="URL" value="{{url}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Комментарий для аналитики</label>
+                                    <input class="form-control" id="description" placeholder="Комментарий" value="{{description}}">
+                                </div>
+                            </div>
+                            <div class="col-md-5" style="max-height: 600px; overflow: hidden;">
+                                <div class="center-block" style="background: transparent url('/iphone5s.png') no-repeat; width: 323px; height: 682px; padding: 100px 24px 101px 27px; overflow: hidden;">
+                                    <div class="text-left" style="height: 481px; width: 272px; overflow: hidden;">
+                                        <div class="type-page-group" style="height: 481px; width: 272px; overflow: hidden;">
+                                            <div style="width: 100%; height: 50%; background-image: {{#with image}}url({{url store='message_images'}}){{/with}}; background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+                                            <h3 style="margin: 10px;">{{header}}</h3>
+                                            <p style="white-space: pre-wrap; margin: 10px;">{{text}}</p>
+                                        </div>
+                                        <div class="type-url-group" style="height: 481px; width: 272px; overflow: hidden;">
+                                            <p style="white-space: pre-wrap; margin: 10px;">На экране отобразится содержимое страницы<br/>{{url}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-toolbar" role="toolbar">
+                            <a href="{{pathFor 'messages'}}" class="btn btn-default">Отмена</a>
+                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</button>
+                            <a href="#" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
