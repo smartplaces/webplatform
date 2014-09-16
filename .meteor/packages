@@ -14,9 +14,9 @@ arunoda:npm@0.2.6
 http
 mrt:iron-router-progress@0.4.1
 joshowens:accounts-entry
-collectionfs
-cfs-gridfs
-cfs-graphicsmagick
-cfs-ui
 iron:router
+cfs:standard-packages
+cfs:gridfs
+cfs:graphicsmagick
+cfs:ui
 
