@@ -1,58 +1,64 @@
 <template name="beaconPage">
-    <form role="form" style="margin-top: 20px;">
-        <div class="panel panel-primary">
-            <div class="panel-heading"><h4 class="panel-title">Редактирование маячка <a href="{{pathFor 'beacons'}}" class="pull-right">&times;</a></h4></div>
-            <div class="panel-body">
-                <!--
-                <div class="form-group">
-                    <label for="location">Место, где расположен маячок</label>
-                    <select class="form-control" id="location">
-                        {{#if location}}
-                        <option value="{{location}}" selected="true">{{locationInfo}}</option>
-                        {{else}}
-                        <option></option>
-                        {{/if}}
-                        {{#each locations}}
-                        <option value="{{_id}}">{{title}}</option>
-                        {{/each}}
-                    </select>
-                </div>
-                -->
-                <div class="form-group">
-                    <label for="name">Имя маячка</label>
-                    <input class="form-control" id="name" placeholder="Имя маячка" value="{{name}}">
-                </div>
+    <form role="form">
+        <div class="modal" style="position:relative;top:auto;right:auto;left:auto;bottom:auto;z-index:1;display:block;overflow-y:auto;">
+            <div class="modal-dialog" style="left:auto;margin-left:auto;margin-right:auto;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Редактирование маячка <a href="{{pathFor 'beacons'}}" class="pull-right">&times;</a></h4>
+                    </div>
+                    <div class="modal-body">
+                      <!--
+                      <div class="form-group">
+                          <label for="location">Место, где расположен маячок</label>
+                          <select class="form-control" id="location">
+                              {{#if location}}
+                              <option value="{{location}}" selected="true">{{locationInfo}}</option>
+                              {{else}}
+                              <option></option>
+                              {{/if}}
+                              {{#each locations}}
+                              <option value="{{_id}}">{{title}}</option>
+                              {{/each}}
+                          </select>
+                      </div>
+                      -->
+                      <div class="form-group">
+                          <label for="name">Имя маячка</label>
+                          <input class="form-control" id="name" placeholder="Имя маячка" value="{{name}}">
+                      </div>
 
-                <div class="form-group">
-                    <label for="tags">Теги маячка</label>
-                    <input class="form-control" id="tags" placeholder="Теги маячка" value={{tags}}>
-                </div>
+                      <div class="form-group">
+                          <label for="tags">Теги маячка</label>
+                          <input class="form-control" id="tags" placeholder="Теги маячка" value={{tags}}>
+                      </div>
 
-                <div class="form-group">
-                    <label for="location">Место, где расположен маячок</label>
-                    <input class="form-control" id="location" placeholder="Место расположения" value="{{locationInfo}}" disabled>
-                </div>
+                      <div class="form-group">
+                          <label for="location">Место, где расположен маячок</label>
+                          <input class="form-control" id="location" placeholder="Место расположения" value="{{locationInfo}}" disabled>
+                      </div>
 
-                <div class="form-group">
-                    <label for="uuid">Идентификатор маячка</label>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <input class="form-control" id="uuid" placeholder="UUID" value="{{uuid}}" disabled >
-                        </div>
-                        <div class="col-md-2">
-                            <input class="form-control" id="major" placeholder="Major" value="{{major}}" disabled >
-                        </div>
-                        <div class="col-md-2">
-                            <input class="form-control" id="minor" placeholder="Minor" value="{{minor}}" disabled >
+                      <div class="form-group">
+                          <label for="uuid">Идентификатор маячка</label>
+                          <div class="row">
+                              <div class="col-md-8">
+                                  <input class="form-control" id="uuid" placeholder="UUID" value="{{uuid}}" disabled >
+                              </div>
+                              <div class="col-md-2">
+                                  <input class="form-control" id="major" placeholder="Major" value="{{major}}" disabled >
+                              </div>
+                              <div class="col-md-2">
+                                  <input class="form-control" id="minor" placeholder="Minor" value="{{minor}}" disabled >
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-toolbar" role="toolbar">
+                            <a href="{{pathFor 'beacons'}}" class="btn btn-default">Отмена</a>
+                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</button>
+                            <a href="#" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="panel-footer text-right">
-                <div class="btn-toolbar" role="toolbar">
-                    <a href="{{pathFor 'beacons'}}" class="btn btn-default">Отмена</a>
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</button>
-                    <a href="#" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
                 </div>
             </div>
         </div>
