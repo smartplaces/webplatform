@@ -1,35 +1,37 @@
 <template name="couponView">
-<div id="pkpass">
-    <div class="pk-coupon" style="background: linear-gradient(to top, {{backgroundColor}} 400px, {{backgroundColor2}} 450px)">
-        <div class="pk-header">
-            {{#with logo}}
-            <div class="pk-logo" style="background-image:url('{{url store='logos'}}')"></div>
+<div class="center-block" style="background: transparent url('/iphone5s_320px.png') no-repeat; width: 380px; height: 804px; padding: 117px 28px 119px 32px; overflow: hidden;">
+    <div id="pkpass">
+        <div class="pk-coupon" style="background: linear-gradient(to top, {{backgroundColor}} 400px, {{backgroundColor2}} 450px)">
+            <div class="pk-header">
+                {{#with logo}}
+                <div class="pk-logo" style="background-image:url('{{url store='logos'}}')"></div>
+                {{/with}}
+                <div class="pk-title">
+                    <h1 class="pk-text" style="color:{{foregroundColor}}">{{logoText}}</h1>
+                </div>
+                <div class="pk-header-fields">
+                    <span class="pk-label pk-text"></span>
+                    <span class="pk-value pk-text"></span>
+                </div>
+            </div>
+            {{#with strip}}
+            <div class="pk-strip" style="background-image:url('{{url store='strips'}}')">
+                <span class="pk-value pk-text">{{primaryFieldValue}}</span>
+                <div></div>
+                <span class="pk-label pk-text">{{primaryFieldLabel}}</span>
+            </div>
             {{/with}}
-            <div class="pk-title">
-                <h1 class="pk-text" style="color:{{foregroundColor}}">{{logoText}}</h1>
+            <div class="pk-secondary">
+                <span class="pk-label pk-text" style="color:{{labelColor}}">{{secondaryFieldLabel}}</span>
+                <span class="pk-value pk-text" style="color:{{labelColor}}">{{secondaryFieldValue}}</span>
             </div>
-            <div class="pk-header-fields">
-                <span class="pk-label pk-text"></span>
-                <span class="pk-value pk-text"></span>
+            <div class="pk-auxiliary"></div>
+            <div class="pk-barcode">
+                <div class="pk-barcode-image"></div>
+                <div class="pk-barcode-alt pk-text">{{barcodeMessage}}</div>
             </div>
-        </div>
-        {{#with strip}}
-        <div class="pk-strip" style="background-image:url('{{url store='strips'}}')">
-            <span class="pk-value pk-text">{{primaryFieldValue}}</span>
-            <div></div>
-            <span class="pk-label pk-text">{{primaryFieldLabel}}</span>
-        </div>
-        {{/with}}
-        <div class="pk-secondary">
-            <span class="pk-label pk-text" style="color:{{labelColor}}">{{secondaryFieldLabel}}</span>
-            <span class="pk-value pk-text" style="color:{{labelColor}}">{{secondaryFieldValue}}</span>
-        </div>
-        <div class="pk-auxiliary"></div>
-        <div class="pk-barcode">
-            <div class="pk-barcode-image"></div>
-            <div class="pk-barcode-alt pk-text">{{barcodeMessage}}</div>
-        </div>
-        <div class="">
+            <div class="">
+            </div>
         </div>
     </div>
 </div>

@@ -8,7 +8,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-7">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="messagetype">Тип сообщения</label>
                                     <select class="form-control" id="messagetype" placeholder="Тип сообщения">
@@ -41,15 +41,15 @@
                                     <input class="form-control" id="description" placeholder="Комментарий" value="{{description}}">
                                 </div>
                             </div>
-                            <div class="col-md-5" style="max-height: 600px; overflow: hidden;">
-                                <div class="center-block" style="background: transparent url('/iphone5s.png') no-repeat; width: 323px; height: 682px; padding: 100px 24px 101px 27px; overflow: hidden;">
-                                    <div class="text-left" style="height: 481px; width: 272px; overflow: hidden;">
-                                        <div class="type-page-group" style="height: 481px; width: 272px; overflow: hidden;">
+                            <div class="col-md-6" style="max-height: 600px; overflow: hidden;">
+                                <div class="center-block" style="background: transparent url('/iphone5s_320px.png') no-repeat; width: 380px; height: 804px; padding: 117px 28px 119px 32px; overflow: hidden;">
+                                    <div class="text-left" style="height: 568px; width: 320px; overflow: hidden;">
+                                        <div class="type-page-group" style="height: 568px; width: 320px; overflow: hidden;">
                                             <div style="width: 100%; height: 50%; background-image: {{#with image}}url({{url store='message_images'}}){{/with}}; background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
                                             <h3 style="margin: 10px;">{{header}}</h3>
                                             <p style="white-space: pre-wrap; margin: 10px;">{{text}}</p>
                                         </div>
-                                        <div class="type-url-group" style="height: 481px; width: 272px; overflow: hidden;">
+                                        <div class="type-url-group" style="height: 568px; width: 320px; overflow: hidden;">
                                             <p style="white-space: pre-wrap; margin: 10px;">На экране отобразится содержимое страницы<br/>{{url}}</p>
                                         </div>
                                     </div>
