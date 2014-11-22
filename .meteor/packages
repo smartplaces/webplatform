@@ -12,11 +12,11 @@ mrt:mongo-counter@1.1.0
 coffeescript
 arunoda:npm@0.2.6
 http
-mrt:iron-router-progress@0.4.1
 joshowens:accounts-entry
 iron:router
 cfs:standard-packages
 cfs:gridfs
 cfs:graphicsmagick
 cfs:ui
+multiply:iron-router-progress
 
