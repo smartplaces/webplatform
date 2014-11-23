@@ -1,0 +1,24 @@
+<template name="imagesList">
+  {{>tabs}}
+  <div class="bs-callout bs-callout-info"><h4>Загрузите изображения, которые будут использоваться в сообщениях и купонах</h4><p>Для редактирования или удаления сообщения, нажмите на него в списке.</p></div>
+
+    <p><input class="uploader" type="file"></p>
+  {{#with FS.GetFile "images" uploadedImageId}}
+  {{#unless this.isUploaded}}
+  {{> FS.UploadProgressBar bootstrap=true}}
+  {{/unless}}
+  {{/with}}
+
+    <div class="row">
+       {{#each images}}
+      <div class="col-xs-6 col-md-3">
+        <div class="thumbnail">
+          <img src="{{this.url store='thumbnail'}}" alt="{{this.name}}"/>
+          <div class="caption">
+            {{#FS.DeleteButton class="btn btn-danger btn-xs"}}Удалить{{/FS.DeleteButton}}
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>  
+</template>

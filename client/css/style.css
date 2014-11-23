@@ -136,3 +136,7 @@ body {
   color: #000000;
   text-shadow: none;
 }
+
+.select2-container .select2-choice {
+    height: 100px;
+}

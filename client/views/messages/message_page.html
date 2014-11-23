@@ -19,7 +19,12 @@
                                 <div class="type-page-group">
                                     <div class="form-group">
                                         <label for="image">Картинка</label>
-                                        <input class="form-control" type="file" id="image" name="image">
+                                        <select class="form-control" id="image" placeholder="Изображение">
+                                         <option></option>
+                                         {{#each images}}
+                                         <option value="{{_id}}">{{name}}</option>
+                                         {{/each}}
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="header">Заголовок</label>
@@ -45,7 +50,7 @@
                                 <div class="center-block" style="background: transparent url('/iphone5s_320px.png') no-repeat; width: 380px; height: 804px; padding: 117px 28px 119px 32px; overflow: hidden;">
                                     <div class="text-left" style="height: 568px; width: 320px; overflow: hidden;">
                                         <div class="type-page-group" style="height: 568px; width: 320px; overflow: hidden;">
-                                            <div style="width: 100%; height: 50%; background-image: {{#with image}}url({{url store='message_images'}}){{/with}}; background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+                                            <div style="width: 100%; height: 50%; background-image: url('{{image}}'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
                                             <h3 style="margin: 10px;">{{header}}</h3>
                                             <p style="white-space: pre-wrap; margin: 10px;">{{text}}</p>
                                         </div>
