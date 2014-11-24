@@ -38,7 +38,6 @@ Template.messagePage.rendered = function (){
   
   $('#image').select2({
     formatResult: format,
-    formatSelection: format,
     escapeMarkup: function(m) { return m; }
   });
   

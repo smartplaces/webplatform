@@ -1,5 +1,5 @@
 Template.couponEditor.rendered=function(){
-
+  if (this.data && this.data.pass){
   Session.set('coupon.logoText',(this.data && this.data._id)?this.data.pass.logoText:'!Заголовок');
 
   Session.set('coupon.primaryFieldValue',(this.data && this.data._id)?this.data.pass.coupon.primaryFields[0].value:'!Купон');
@@ -18,8 +18,7 @@ Template.couponEditor.rendered=function(){
   Session.set('coupon.backgroundColor',(this.data && this.data._id)?this.data.pass.backgroundColor:'');
   Session.set('coupon.foregroundColor',(this.data && this.data._id)?this.data.pass.foregroundColor:'');
   Session.set('coupon.labelColor',(this.data && this.data._id)?this.data.pass.labelColor:'');
-
-
+  
   $('.backgroundColor').colorpicker({format:'rgb'}).on('changeColor', function(ev){
     Session.set('coupon.backgroundColor',ev.color.toHex());
   });
@@ -56,10 +55,45 @@ Template.couponEditor.rendered=function(){
 
   Session.set('coupon.locations', $('#locations').val());
 
+  var format = function(state) {
+    if (state.id){
+      var i = Images.findOne(state.id);
+      if (i){
+        return '<img src="'+i.url({store:'thumbnail'})+'"/>';  
+      }else{
+        return state.text;  
+      }
+    }else{
+      return state.text;  
+    }
+    
+  }
+  
+  $('#logo').select2({
+    formatResult: format,
+    escapeMarkup: function(m) { return m; }
+  });
+  
+  if (this.data && this.data.images && this.data.images.logo){
+    $('#logo').val(this.data.images.logo._id).trigger('change');
+  }
+  
+  $('#strip').select2({
+    formatResult: format,
+    escapeMarkup: function(m) { return m; }
+  });
+  
+  if (this.data && this.data.images && this.data.images.strip){
+    $('#strip').val(this.data.images.strip._id).trigger('change');  
+  }
+  }
 
 };
 
 Template.couponEditor.helpers({
+  imagesList: function(){
+    return Images.find();
+  },
   locations: function(){
     return Locations.find();
   },
@@ -87,107 +121,31 @@ Template.couponEditor.helpers({
 
 Template.couponEditor.events({
   'change #logoText': function(e){
-    Session.set('coupon.logoText',$(event.target).val());
+    Session.set('coupon.logoText',e.target.value);
   },
   'change #primaryFieldValue': function(e){
-    Session.set('coupon.primaryFieldValue',$(event.target).val());
+    Session.set('coupon.primaryFieldValue',e.target.value);
   },
   'change #primaryFieldLabel': function(e){
-    Session.set('coupon.primaryFieldLabel',$(event.target).val());
+    Session.set('coupon.primaryFieldLabel',e.target.value);
   },
   'change #secondaryFieldLabel': function(e){
-    Session.set('coupon.secondaryFieldLabel',$(event.target).val());
+    Session.set('coupon.secondaryFieldLabel',e.target.value);
   },
   'change #secondaryFieldValue': function(e){
-    Session.set('coupon.secondaryFieldValue',$(event.target).val());
+    Session.set('coupon.secondaryFieldValue',e.target.value);
   },
   'change #barcodeMessage': function(e){
-    Session.set('coupon.barcodeMessage',$(event.target).val());
+    Session.set('coupon.barcodeMessage',e.target.value);
   },
   'change #notify' : function (e){
-    Session.set('coupon.notify',$(event.target).is(':checked'));
+    Session.set('coupon.notify',$(e.target).is(':checked'));
   },
   'change #logo': function(e,t){
-    var fsFileL = new FS.File(e.target.files[0]);
-    var fsFileI = new FS.File(e.target.files[0]);
-
-    fsFileL.userId = Meteor.userId();
-
-    fsFileI.userId = Meteor.userId();
-
-    var logo = Logos.insert(fsFileL,function(err,fileObj){
-      if (err){
-        console.log(err);
-      }else{
-        Session.set('coupon.logo',fileObj._id);
-        Session.set('coupon.icon',fileObj._id);
-      }
-    });
-
-    /*
-    var icon = Icons.insert(fsFileI,function(err,fileObj){
-      if (err){
-        console.log(err);
-      }else{
-        Session.set('coupon.icon',fileObj._id);
-      }
-    });
-    */
-
-    var sid='default';
-    try{
-      sid = t.data.images.strip._id;
-    }catch(e){}
-
-    Router.go('/coupons/'+t.data._id+'/icon/'+logo._id+'/logo/'+logo._id+'/strip/'+sid);
-
-    /*
-    Deps.autorun(function(comp){
-      var l = Logos.findOne(logo._id);
-      var p = l.uploadProgress();
-      Session.set('progress',  (p==0)?5:p);
-      if (l.isUploaded()){
-        $('div.progress').hide();
-        comp.stop();
-        Router.go('/coupons/'+t.data._id+'/logo/'+logo._id);
-      }
-    });
-    */
+    Session.set('coupon.logo',e.target.value);
+    Session.set('coupon.icon',e.target.value);
   },
   'change #strip': function(e,t){
-    var fsFile = new FS.File(e.target.files[0]);
-    fsFile.userId = Meteor.userId();
-
-    var strip = Strips.insert(fsFile,function(err,fileObj){
-      if (err){
-        console.log(err);
-      }else{
-        Session.set('coupon.strip',fileObj._id);
-      }
-    });
-
-    var lid='default';
-    try{
-      lid = t.data.images.logo._id;
-    }catch(e){}
-
-    var iid='default';
-    try{
-      iid = t.data.images.icon._id;
-    }catch(e){}
-
-
-    Router.go('/coupons/'+t.data._id+'/icon/'+iid+'/logo/'+lid+'/strip/'+strip._id);
-    /*
-    Deps.autorun(function(comp){
-      var s = Strips.findOne(strip._id);
-      var p = s.uploadProgress();
-      Session.set('progress',  (p==0)?5:p);
-      if (s.isUploaded()){
-        $('div.progress').hide();
-        comp.stop();
-      }
-    });
-    */
+    Session.set('coupon.strip',e.target.value);
   }
 });

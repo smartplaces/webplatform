@@ -54,11 +54,11 @@ Template.couponPage.events({
     };
 
     var locations = Session.get('coupon.locations');
-
-    _.each(locations.toString().split(','),function(location){
-      coupon.locations.push(location);
-    });
-
+    if (locations){
+      _.each(locations.toString().split(','),function(location){
+        coupon.locations.push(location);
+      });
+    }
     Meteor.call('saveCoupon',coupon,function(error){
       if (error){
         alert(error.reason);

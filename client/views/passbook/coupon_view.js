@@ -18,7 +18,7 @@ Template.couponView.helpers({
     return Session.get('coupon.barcodeMessage');
   },
   logo: function(){
-    var logo = Logos.findOne(Session.get('coupon.logo'));
+    var logo = Images.findOne(Session.get('coupon.logo'));
     if (logo){
       return logo;
     }else{
@@ -28,7 +28,7 @@ Template.couponView.helpers({
     }
   },
   strip: function(){
-    var strip = Strips.findOne(Session.get('coupon.strip'));
+    var strip = Images.findOne(Session.get('coupon.strip'));
     if (strip){
       return strip;
     }else{

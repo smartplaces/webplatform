@@ -13,18 +13,20 @@ Template.couponsList.helpers({
 
 });
 
-/*
+
 Template.couponsList.events({
-  'click #new': function (e){
+  'click a.delete': function (e){
     e.preventDefault();
-    Meteor.call('saveEmpty',function(error,couponId){
-      if (error){
-        alert(error.reason);
+    console.log('Delete coupon with id '+e.target.id);
+    Coupons.remove(e.target.id);
+  },
+  'click #new': function(e,t){
+    Meteor.call('saveEmpty',function(err,id){
+      if (err){
+        console.log(err);
       }else{
-         Router.go('coupon',{_id:couponId});
+        Router.go('/coupons/'+id);
       }
     });
   }
-
 });
-*/

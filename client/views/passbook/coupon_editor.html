@@ -1,10 +1,16 @@
 <template name="couponEditor">
+    {{#if pass}}
     {{#with pass}}
     <div class="form-horizontal">
         <div class="form-group">
             <label for="logo" class="col-sm-3 control-label">Логотип</label>
             <div class="col-sm-9">
-                <input type="file" name="logo" id="logo">
+              <select class="form-control" id="logo" placeholder="Логотип">
+                <option></option>
+                {{#each imagesList}}
+                <option value="{{_id}}">{{name}}</option>
+                {{/each}}
+              </select>
             </div>
         </div>
         <div class="form-group">
@@ -16,7 +22,12 @@
         <div class="form-group">
             <label for="strip" class="col-sm-3 control-label">Банер</label>
             <div class="col-sm-9">
-                <input type="file" name="strip" id="strip">
+              <select class="form-control" id="strip" placeholder="Банер">
+                  <option></option>
+                  {{#each imagesList}}
+                  <option value="{{_id}}">{{name}}</option>
+                  {{/each}}
+              </select>
             </div>
         </div>
         <div class="form-group">
@@ -98,4 +109,7 @@
         </div>
     </div>
     {{/with}}
+    {{else}}
+      {{>spinner}}
+    {{/if}}
 </template>

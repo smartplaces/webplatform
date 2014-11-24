@@ -61,7 +61,7 @@ Meteor.methods({
       }
       */
 
-      var logo = Logos.findOne(coupon.logo);
+      var logo = Images.findOne(coupon.logo);
       if (logo){
         images.logo = {
           _id: logo._id,
@@ -72,23 +72,13 @@ Meteor.methods({
           _id: logo._id,
           key: logo.getFileRecord().copies.icons.key
         };
-
-
-        if (old_images && old_images.logo && old_images.logo._id != images.logo._id){
-          Logos.remove(old_images.logo._id);
-        }
-
       }
 
-      var strip = Strips.findOne(coupon.strip);
+      var strip = Images.findOne(coupon.strip);
       if (strip){
         images.strip = {
           _id: strip._id,
           key: strip.getFileRecord().copies.strips.key
-        }
-
-        if (old_images && old_images.strip && old_images.strip._id != images.strip._id){
-          Strips.remove(old_images.strip._id);
         }
       }
 
@@ -105,8 +95,9 @@ Meteor.methods({
         }
       });
 
+      /*
       if (logo){
-        Logos.update(logo._id,{$set:{passId:c._id}},function (error){
+        Images.update(logo._id,{$set:{passId:c._id}},function (error){
           if (error){
             throw new Meteor.Error(500, 'Ошибка: невозможно обновить метаданные для logo :(!');
           }
@@ -114,13 +105,14 @@ Meteor.methods({
       }
 
       if (strip){
-        Strips.update(strip._id,{$set:{passId:c._id}}, function (error){
+        Images.update(strip._id,{$set:{passId:c._id}}, function (error){
           if (error){
             throw new Meteor.Error(500, 'Ошибка: невозможно обновить метаданные для strip :(!');
           }
         });
       }
-
+      */
+      
       if (coupon.notify){
         console.log('Send notification to registered devices for pass with id ['+c._id+']');
         var url = 'http://sleepy-scrubland-4869.herokuapp.com/passws/notify/'+c.pass.passTypeIdentifier+'/'+c.pass.serialNumber+'?id='+c._id;
@@ -139,7 +131,7 @@ Meteor.methods({
 
   saveEmpty: function(){
     var data = {
-      userId: Meteor.user()._id,
+      userId: Meteor.userId(),
       updatedAt: new Date().getTime(),
       type : 'coupon',
     };
@@ -152,13 +144,15 @@ Meteor.methods({
       shasum.update(id+"/"+data.userId);
       var url = 'http://sleepy-scrubland-4869.herokuapp.com/passws/create/pass.ru.smartplaces.coupon/SN'+new Date().getTime()+'?id='+id+'&hash='+shasum.digest('hex');
       try{
+        console.log('Try to get '+url);
         HTTP.get(url);
+        console.log('It\'s OK');
       }catch(ex){
         Coupons.remove(id);
         throw ex;
       }
     }
-
+    console.log('Coupon created with id '+id);
     return id;
   }
 });
