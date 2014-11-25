@@ -13,7 +13,9 @@
        {{#each images}}
       <div class="col-xs-6 col-md-3">
         <div class="thumbnail">
-          <img src="{{this.url store='thumbnail'}}" alt="{{this.name}}"/>
+          <div class="thumbnail-helper">
+            <img src="{{this.url store='thumbnail'}}" alt="{{this.name}}"/>
+          </div>
           <div class="caption">
             {{#FS.DeleteButton class="btn btn-danger btn-xs"}}Удалить{{/FS.DeleteButton}}
           </div>
