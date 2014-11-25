@@ -136,3 +136,9 @@ body {
   color: #000000;
   text-shadow: none;
 }
+
+.thumbnail-helper {
+  min-width: 180px;
+  min-height: 180px;
+  text-align: center;
+}
