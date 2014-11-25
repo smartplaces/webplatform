@@ -131,21 +131,12 @@ Template.scenarioNewPage.helpers({
     messages: function(){
         return Messages.find();
     },
-    messageInfo: function(){
-        var message = Messages.findOne(this.message);
-        if (message){
-            return message.text;
-        }else{
-            return '';
-        }
-    },
     tags: function(){
         return Tags.find();
     },
     proximities: function(){
         return PROXIMITIES;
     },
-
     events: function(){
         return EVENTS;
     },

@@ -27,6 +27,13 @@ Template.scenarioPage.rendered = function (){
 
     if (this.data.frequency)
         $('#frequency').val(this.data.frequency).trigger('change');
+  
+    $('#message').select2({
+        allowClear: false
+    });
+
+    if (this.data.message)
+        $('#message').val(this.data.message).trigger('change');
 
     var data = this.data;
 
@@ -110,6 +117,9 @@ Template.scenarioPage.events({
 });
 
 Template.scenarioPage.helpers({
+    messages: function(){
+        return Messages.find();
+    },  
     tags: function(){
         return Tags.find();
     },

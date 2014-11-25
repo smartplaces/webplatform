@@ -60,7 +60,11 @@
                             <div class="col-md-6">
                                 <legend><h4>Какое сообщение показать посетителю?</h4></legend>
                                 <div class="form-group">
-                                    <input class="form-control" id="message" placeholder="Ваше сообщение для посетителей" value="{{message}}">
+                                  <select class="form-control" id="message" placeholder="Ваше сообщение для посетителей">
+                                        {{#each messages}}
+                                        <option value="{{_id}}">{{header}}</option>
+                                        {{/each}}
+                                  </select>  
                                 </div>
                             </div>
                         </div>
@@ -111,7 +115,6 @@
                         <div class="btn-toolbar" role="toolbar">
                             <a href="{{pathFor 'scenarios'}}" class="btn btn-default">Отмена</a>
                             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ОК</button>
-                            <a href="#" id="submit2" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ОК2</a>
                         </div>
                     </div>
                 </div>

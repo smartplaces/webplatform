@@ -9,7 +9,7 @@
         {{#each scenarios}}
         <a href="{{pathFor 'scenario'}}" class="list-group-item">
             <h4 class="list-group-item-heading">{{name}}</h4>
-            <p class="list-group-item-text">Если посетитель <span class="label label-default">{{label 'event'}}</span> на расстояние <span class="label label-default">{{label 'proximity'}}</span> к маячку с тегом {{#each beacons}}<span class="label label-default">{{this}}</span>{{/each}}, тогда показать сообщение <span class="label label-default">{{message}}</span>.</p>
+            <p class="list-group-item-text">Если посетитель <span class="label label-default">{{label 'event'}}</span> на расстояние <span class="label label-default">{{label 'proximity'}}</span> к маячку с тегом {{#each beacons}}<span class="label label-default">{{this}}</span>{{/each}}, тогда показать сообщение <span class="label label-default">{{messageInfo}}</span>.</p>
             <p class="list-group-item-text">Сценарий активен: {{isActive}}. {{#if frequency}} Повторять с частотой {{label 'frequency'}}. {{/if}} Период действия сценария: {{period}}</p>
         </a>
         {{/each}}

@@ -58,7 +58,11 @@
                                 <div class="form-group">
                                     <label for="message">Сообщение для посетителей</label>
                                     <div class="form-group">
-                                        <input class="form-control" id="message" placeholder="Ваше сообщение для посетителей" value="{{message}}">
+                                        <select class="form-control" id="message" placeholder="Ваше сообщение для посетителей">
+                                        {{#each messages}}
+                                        <option value="{{_id}}">{{header}}</option>
+                                        {{/each}}
+                                        </select>  
                                     </div>
                                 </div>
                             </div>

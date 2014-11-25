@@ -1,4 +1,12 @@
 Template.scenariosList.helpers({
+  messageInfo: function(){
+    var m = Messages.findOne(this.message);
+    if (m){
+      return m.header;
+    }else{
+      return "";
+    }
+  },
   scenarios: function(){
         return Scenarios.find();
   },
