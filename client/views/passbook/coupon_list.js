@@ -15,10 +15,12 @@ Template.couponsList.helpers({
 
 
 Template.couponsList.events({
-  'click a.delete': function (e){
+  'click .coupon-item-remove': function (e){
     e.preventDefault();
-    console.log('Delete coupon with id '+e.target.id);
-    Coupons.remove(e.target.id);
+    if (confirm("Вы уверены, что хотите удалить этот купон?")){
+      console.log('Delete coupon with id '+e.target.id);
+      Coupons.remove(e.target.id);
+    };
   },
   'click #new': function(e,t){
     Meteor.call('saveEmpty',function(err,id){

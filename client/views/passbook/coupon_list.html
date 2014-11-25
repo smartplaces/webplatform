@@ -8,11 +8,11 @@
       {{#each coupons}}
           <a href="{{pathFor 'coupon'}}" class="list-group-item">
               {{#with pass}}
+              <span class="coupon-item-remove glyphicon glyphicon-remove pull-right text-danger" id="{{_id}}"></span>
               <h4 class="list-group-item-heading">{{logoText}}</h4>
               <p class="list-group-item-text">{{primaryFieldValue}} {{primaryFieldLabel}}</p>
               {{/with}}
           </a>
-          <a href="#" class="btn btn-danger delete" id="{{_id}}"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
       {{/each}}
   </div>
 </template>
