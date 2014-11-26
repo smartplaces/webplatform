@@ -63,3 +63,12 @@ Template.scenariosList.helpers({
   }
 
 });
+
+Template.scenariosList.events({
+  'click .scenario-item-remove': function (e){
+    e.preventDefault();
+    if (confirm("Вы уверены, что хотите удалить этот сценарий?")){
+      Scenarios.remove(e.target.id);
+    };
+  },
+});

@@ -7,6 +7,7 @@
     <div class="list-group">
         {{#each messages}}
         <a href="{{pathFor 'message'}}" class="list-group-item">
+            <span class="message-item-remove glyphicon glyphicon-remove pull-right text-danger" id="{{_id}}"></span>  
             <h4 class="list-group-item-heading">{{header}}</h4>
             <h4 class="list-group-item-heading">{{url}}</h4>
             <p class="list-group-item-text">{{description}}</p>

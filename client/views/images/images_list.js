@@ -14,6 +14,12 @@ Template.imagesList.events({
         });
         Session.set('uploadedImageId',i._id);
       });
+  },
+  'click .image-item-remove': function (e){
+    e.preventDefault();
+    if (confirm("Вы уверены, что хотите удалить это изображение?")){
+       Images.remove(e.target.id);
+    };
   }
 });
 
