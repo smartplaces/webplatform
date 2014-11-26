@@ -21,6 +21,8 @@ Template.messagePage.rendered = function (){
   
   if (this.data && this.data.messagetype) {
     $('#messagetype').val(this.data.messagetype).trigger('change');
+  }else{
+    $('#messagetype').val('10').trigger('change');
   }
   
   var format = function(state) {
