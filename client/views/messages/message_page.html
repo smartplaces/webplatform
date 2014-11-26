@@ -5,8 +5,10 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Редактирование сообщения <a href="{{pathFor 'messages'}}" class="pull-right">&times;</a></h4>
+                        
                     </div>
                     <div class="modal-body">
+                        <div id="alert" class="alert {{alertClass}}" role="alert">{{alertMessage}}</div>  
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">

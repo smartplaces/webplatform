@@ -1,23 +1,24 @@
 Template.messagePage.created = function (){
-    if (this.data) {
-        Session.set('message.header',this.data.header);
-        Session.set('message.text',this.data.text);
-        Session.set('message.url',this.data.url);
-        Session.set('message.description',this.data.description);
-        if (this.data.image){
-          Session.set('message.image',this.data.image._id);    
-        }  
-    }else{
-      Session.set('message.header',undefined);
-      Session.set('message.text',undefined);
-      Session.set('message.url',undefined);
-      Session.set('message.description',undefined);
-      Session.set('message.image',undefined);
+  if (this.data) {
+    Session.set('message.header',this.data.header);
+    Session.set('message.text',this.data.text);
+    Session.set('message.url',this.data.url);
+    Session.set('message.description',this.data.description);
+    if (this.data.image){
+      Session.set('message.image',this.data.image._id);    
     }
+
+  }else{
+    Session.set('message.header',undefined);
+    Session.set('message.text',undefined);
+    Session.set('message.url',undefined);
+    Session.set('message.description',undefined);
+    Session.set('message.image',undefined);
+  }
 }
 
 Template.messagePage.rendered = function (){
-
+  
   if (this.data && this.data.messagetype) {
     $('#messagetype').val(this.data.messagetype).trigger('change');
   }
@@ -86,7 +87,7 @@ Template.messagePage.events({
     if (confirm("Are you realy want to delete this message?")){
       Messages.remove({_id:this._id}, function(error){
         if (error){
-          alert(error.reason);
+          createAlert('Danger',error.reason);
         }else{
           Router.go('messages');
         }
@@ -139,15 +140,13 @@ Template.messagePage.events({
       image: $(e.target).find('[id=image]').val()
     }
 
-    //message.image = (Session.get('message.image'))?Session.get('message.image'):((t.data && t.data.image) ? t.data.image._id : undefined);
-
     if (this._id){
       _.extend(message,{_id:this._id});
     }
-
+    
     Meteor.call('saveMessage',message,function (error){
       if (error){
-        alert(error.reason);
+        createAlert('Danger',error.reason);
       }else{
         Router.go('messages');
       }

@@ -142,3 +142,12 @@ body {
   min-height: 180px;
   text-align: center;
 }
+/*
+* Styles for alert messages
+*/
+#alert.alert{
+  display: block;
+}
+#alert.alert-hidden{
+  display: none;
+}
