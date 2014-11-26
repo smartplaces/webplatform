@@ -38,7 +38,7 @@ Meteor.methods({
     }
 
     _.each(data.tags,function (tag){
-        if (tag!=undefined && tag.trim()!=""){
+        if (tag!==undefined && tag.trim()!==""){
           if (!Tags.findOne({name:tag.trim(), userId:user._id})){
             Tags.insert({name:tag.trim(),userId:user._id});
           }
