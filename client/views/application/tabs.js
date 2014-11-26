@@ -1,5 +1,5 @@
 Template.tabs.helpers({
-    isActive: function(path){
-        return (Router.path(path) == Router.current().path)? 'active' : '';
+    isActive: function(routeName){
+      return (routeName == Router.current().route.getName()) ? 'active' : '';
     }
 });
