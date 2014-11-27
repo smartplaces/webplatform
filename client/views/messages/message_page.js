@@ -86,7 +86,7 @@ Template.messagePage.helpers({
 Template.messagePage.events({
   'click #delete':function(e){
     e.preventDefault();
-    if (confirm("Are you realy want to delete this message?")){
+    if (confirm("Вы уверены, что хотите удалить это сообщение?")){
       Messages.remove({_id:this._id}, function(error){
         if (error){
           createAlert('Danger',error.reason);
@@ -141,7 +141,7 @@ Template.messagePage.events({
       description: $(e.target).find('[id=description]').val(),
       image: $(e.target).find('[id=image]').val()
     }
-
+    
     if (this._id){
       _.extend(message,{_id:this._id});
     }

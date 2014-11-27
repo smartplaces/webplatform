@@ -26,3 +26,7 @@ clearAlert = function(){
   Session.set('alertClass', undefined);
   Session.set('alertMessage', undefined);
 };
+
+UI.registerHelper('inputRequired', function(key){
+  return Session.get(key) ? '' : 'has-error';
+});
