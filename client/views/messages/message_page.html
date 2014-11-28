@@ -7,7 +7,7 @@
                         <h4 class="modal-title">Редактирование сообщения <a href="{{pathFor 'messages'}}" class="pull-right">&times;</a></h4>
                     </div>
                     <div class="modal-body">
-                        <div id="alert" class="alert {{alertClass}}" role="alert">{{alertMessage}}</div>  
+                        <div class="alert {{alertClass}}" role="alert">{{alertMessage}}</div>  
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -67,7 +67,9 @@
                         <div class="btn-toolbar" role="toolbar">
                             <a href="{{pathFor 'messages'}}" class="btn btn-default">Отмена</a>
                             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</button>
+                            {{#if _id}}  
                             <a href="#" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
+                            {{/if}}
                         </div>
                     </div>
                 </div>

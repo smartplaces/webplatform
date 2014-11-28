@@ -22,7 +22,7 @@
     <div class="list-group">
         {{#each locations}}
         {{#each beacons}}
-            <a href="{{pathFor 'editbeacon'}}" class="list-group-item beacon-item">
+            <a href="{{pathFor 'beacon'}}" class="list-group-item beacon-item">
             <span class="beacon-item-remove glyphicon glyphicon-remove pull-right text-danger" id="{{uuid}}:{{major}}:{{minor}}"></span>
             <h4 class="list-group-item-heading">{{name}}</h4>
             <p>{{../title}} ({{../address}})</p>

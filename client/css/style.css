@@ -145,9 +145,7 @@ body {
 /*
 * Styles for alert messages
 */
-#alert.alert{
-  display: block;
-}
-#alert.alert-hidden{
+
+.alert-hidden{
   display: none;
 }

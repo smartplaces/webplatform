@@ -18,7 +18,7 @@ Template.locationPage.events({
         var location = {
             title: $(e.target).find('[id=title]').val(),
             address: $(e.target).find('[id=address]').val(),
-            contacts: $(e.target).find('[id=contacts]').val(),
+            contacts: $(e.target).find('[id=contacts]').val()
         }
 
         if (this._id){
