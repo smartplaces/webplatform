@@ -44,26 +44,30 @@ Template.scenarioPage.rendered = function (){
     if (this.data){
         Session.set('isNewScenario', false);
         
-        if (this.data.beacons)
-            $('#beacons').val(this.data.beacons).trigger('change');
-
-        if (this.data.proximity)
-            $('#proximity').val(this.data.proximity).trigger('change');
-
-        if (this.data.event)
-            $('#event').val(this.data.event).trigger('change');
-
-        if (this.data.frequency)
-            $('#frequency').val(this.data.frequency).trigger('change');
+        Session.set('scenario.name',this.data.name);
+        Session.set('scenario.beacons',this.data.beacons.length);
         
-        if (this.data.message)
+        $('#beacons').val(this.data.beacons).trigger('change');
+        $('#proximity').val(this.data.proximity).trigger('change');
+        $('#event').val(this.data.event).trigger('change');
         $('#message').val(this.data.message).trigger('change');
+        $('#frequency').val(this.data.frequency).trigger('change');
     }else{
         Session.set('isNewScenario', true);
+        Session.set('scenario.name',undefined);
+        Session.set('scenario.beacons',undefined);
     }
 }
 
 Template.scenarioPage.events({
+    'change #name': function(e,t) {
+        Session.set('scenario.name',e.target.value);
+    },
+    
+    'change #beacons': function(e,t){
+        Session.set('scenario.beacons',e.target.value);
+    },
+    
     'click #delete':function(e){
       e.preventDefault();
       if (confirm("Вы действительно хотите удалить этот сценарий?")){
@@ -125,10 +129,16 @@ Template.scenarioPage.events({
 Template.scenarioPage.helpers({
     messages: function(){
         return Messages.find();
-    },  
+    },
+    
+    name: function(){
+        return Session.get('scenario.name');
+    },
+       
     tags: function(){
         return Tags.find();
     },
+    
     proximities: function(){
         return PROXIMITIES;
     },
@@ -136,9 +146,11 @@ Template.scenarioPage.helpers({
     events: function(){
         return EVENTS;
     },
+    
     frequencies: function(){
         return FREQUENCIES;
     },
+    
     isChecked: function(){
         if (this.active || !this._id){
             return 'checked';
@@ -146,6 +158,7 @@ Template.scenarioPage.helpers({
             return '';
         }
     },
+    
     isNewScenario: function(){
         return Session.get('isNewScenario');
     }
