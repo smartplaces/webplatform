@@ -33,7 +33,7 @@
                                     <label for="event">Посетитель</label>
                                     <select class="form-control" id="event" placeholder="подходит/отходит">
                                         {{#each events}}
-                                        <option value="{{code}}">{{label}}</option>
+                                        <option value="{{this.code}}">{{this.label}}</option>
                                         {{/each}}
                                     </select>
                                 </div>
@@ -41,7 +41,7 @@
                                     <label for="event">на расстояние</label>
                                     <select class="form-control" id="proximity" placeholder="расстояние до маяка">
                                         {{#each proximities}}
-                                        <option value="{{code}}">{{label}}</option>
+                                        <option value="{{this.code}}">{{this.label}}</option>
                                         {{/each}}
                                     </select>
                                 </div>
@@ -110,7 +110,7 @@
                                         <select class="form-control" id="frequency" placeholder="Минимальная частота повторений">
                                             <option></option>
                                             {{#each frequencies}}
-                                            <option value="{{code}}">{{label}}</option>
+                                            <option value="{{this.code}}">{{this.label}}</option>
                                             {{/each}}
                                         </select>
                                         <span class="help-block">Если пусто, то частота не ограничена.</span>
@@ -119,7 +119,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="well well-sm" style="margin-bottom: 0px;">Формулировка сценария: ...</div>
+                            <div class="well well-sm" style="margin-bottom: 0px;">
+                            <p class="list-group-item-text">Если посетитель <span class="label label-default">{{label 'event'}}</span> на расстояние <span class="label label-default">{{label 'proximity'}}</span> к маячку с тегом {{#each beacons}}<span class="label label-default">{{this}}</span>{{/each}}, тогда показать сообщение <span class="label label-default">{{messageInfo}}</span>{{#if hasCoupon}} и отправить купон <span class="label label-default">{{couponInfo}}</span>{{/if}}.</p>
+            <p class="list-group-item-text">Сценарий активен: {{isActive}}. {{#if frequency}} Повторять с частотой {{label 'frequency'}}. {{/if}} Период действия сценария: {{period}}</p>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
