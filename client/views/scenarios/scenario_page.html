@@ -66,6 +66,17 @@
                                         </select>  
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="message">Добавить в сообщение купон</label>
+                                    <div class="form-group">
+                                        <select class="form-control" id="coupon" placeholder="Купон">
+                                            <option></option>
+                                            {{#each coupons}}
+                                            <option value="{{_id}}">{{logoText}} : {{primaryFieldValue}} {{primaryFieldLabel}}</option>
+                                            {{/each}}
+                                        </select>  
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <a href="#" data-toggle="collapse" data-target="#editScenarioParams"><legend><h4>Дополнительные параметры <span class="caret"></span></h4></legend></a>

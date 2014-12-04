@@ -24,7 +24,7 @@ Meteor.methods({
             throw new Meteor.Error(422,'Пожалуйста, заполните все необходимые поля!');
         }
 
-        var data = _.extend(_.pick(scenario,'name','message','beacons','proximity','event','frequency','start','end','active'), {
+        var data = _.extend(_.pick(scenario,'name','message','coupon','beacons','proximity','event','frequency','start','end','active'), {
             userId: user._id,
             updated: new Date().getTime()
         });

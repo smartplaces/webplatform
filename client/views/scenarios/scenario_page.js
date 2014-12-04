@@ -20,6 +20,10 @@ Template.scenarioPage.rendered = function (){
         allowClear: false
     });
     
+    $('#coupon').select2({
+        allowClear: true
+    });
+    
     var data = this.data;
 
     $(function () {
@@ -51,6 +55,7 @@ Template.scenarioPage.rendered = function (){
         $('#proximity').val(this.data.proximity).trigger('change');
         $('#event').val(this.data.event).trigger('change');
         $('#message').val(this.data.message).trigger('change');
+        $('#coupon').val(this.data.coupon).trigger('change');
         $('#frequency').val(this.data.frequency).trigger('change');
     }else{
         Session.set('isNewScenario', true);
@@ -90,6 +95,7 @@ Template.scenarioPage.events({
             proximity: $(e.target).find('[id=proximity]').val(),
             event: $(e.target).find('[id=event]').val(),
             message: $(e.target).find('[id=message]').val(),
+            coupon: $(e.target).find('[id=coupon]').val(),
             frequency: $(e.target).find('[id=frequency]').val(),
             start: $(e.target).find('[id=start]').val(),
             end: $(e.target).find('[id=end]').val(),
@@ -131,6 +137,10 @@ Template.scenarioPage.helpers({
         return Messages.find();
     },
     
+    coupons: function(){
+        return Coupons.find();
+    },
+    
     name: function(){
         return Session.get('scenario.name');
     },
@@ -161,5 +171,17 @@ Template.scenarioPage.helpers({
     
     isNewScenario: function(){
         return Session.get('isNewScenario');
+    },
+    
+    logoText: function(){
+        return this.pass.logoText;
+    },
+    
+    primaryFieldValue: function(){
+        return this.pass.coupon.primaryFields[0].value;
+    },
+
+    primaryFieldLabel: function(){
+        return this.pass.coupon.primaryFields[0].label;
     }
 });
