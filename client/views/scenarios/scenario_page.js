@@ -3,58 +3,64 @@ Template.scenarioPage.rendered = function (){
     $('#beacons').select2({
         allowClear: false
     });
-
-    if (this.data.beacons)
-        $('#beacons').val(this.data.beacons).trigger('change');
-
+    
     $('#proximity').select2({
         allowClear: false
     });
 
-    if (this.data.proximity)
-        $('#proximity').val(this.data.proximity).trigger('change');
-
     $('#event').select2({
         allowClear: false
     });
-
-    if (this.data.event)
-        $('#event').val(this.data.event).trigger('change');
-
+    
     $('#frequency').select2({
         allowClear: false
     });
-
-    if (this.data.frequency)
-        $('#frequency').val(this.data.frequency).trigger('change');
-  
+    
     $('#message').select2({
         allowClear: false
     });
-
-    if (this.data.message)
-        $('#message').val(this.data.message).trigger('change');
-
+    
     var data = this.data;
 
     $(function () {
         $('#start_dp').datetimepicker({
-             language: 'ru',
-             pickTime: false
+            language: 'ru',
+            pickTime: false
         });
-        if (data.start)
+        if (data && data.start)
             $('#start_dp').data("DateTimePicker").setDate(data.start);
 
     });
 
     $(function () {
-         $('#end_dp').datetimepicker({
-             language: 'ru',
-             pickTime: false
-         });
-        if (data.end)
+        $('#end_dp').datetimepicker({
+            language: 'ru',
+            pickTime: false
+        });
+        if (data && data.end)
             $('#end_dp').data("DateTimePicker").setDate(data.end);
     });
+    
+    if (this.data){
+        Session.set('isNewScenario', false);
+        
+        if (this.data.beacons)
+            $('#beacons').val(this.data.beacons).trigger('change');
+
+        if (this.data.proximity)
+            $('#proximity').val(this.data.proximity).trigger('change');
+
+        if (this.data.event)
+            $('#event').val(this.data.event).trigger('change');
+
+        if (this.data.frequency)
+            $('#frequency').val(this.data.frequency).trigger('change');
+        
+        if (this.data.message)
+        $('#message').val(this.data.message).trigger('change');
+    }else{
+        Session.set('isNewScenario', true);
+    }
 }
 
 Template.scenarioPage.events({
@@ -63,7 +69,7 @@ Template.scenarioPage.events({
       if (confirm("Вы действительно хотите удалить этот сценарий?")){
         Scenarios.remove({_id:this._id}, function(error){
           if (error){
-              alert(error.reason);
+              createAlert('Danger',error.reason);
             }else{
               Router.go('scenarios');
             }
@@ -107,7 +113,7 @@ Template.scenarioPage.events({
 
         Meteor.call('saveScenario',scenario,function (error){
             if (error){
-              alert(error.reason);
+              createAlert('Danger',error.reason);
             }else{
               Router.go('scenarios');
             }
@@ -139,5 +145,8 @@ Template.scenarioPage.helpers({
         }else{
             return '';
         }
+    },
+    isNewScenario: function(){
+        return Session.get('isNewScenario');
     }
 });
