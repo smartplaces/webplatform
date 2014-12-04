@@ -1,4 +1,4 @@
-Template.messagePage.created = function (){
+Template.messagePage.rendered = function (){
     if (this.data) {
         Session.set('message.header',this.data.header);
         Session.set('message.text',this.data.text);
@@ -16,10 +16,7 @@ Template.messagePage.created = function (){
         Session.set('message.image',undefined);
         Session.set('isNewMessage', true);
     }
-}
-
-Template.messagePage.rendered = function (){
-
+    
     if (this.data && this.data.messagetype) {
         $('#messagetype').val(this.data.messagetype).trigger('change');
     }else{
@@ -52,7 +49,6 @@ Template.messagePage.rendered = function (){
 }
 
 Template.messagePage.helpers({
-
     images: function(){
         return Images.find();
     },
