@@ -10,7 +10,7 @@
                       <div class="alert {{alertClass}}" role="alert">{{alertMessage}}</div>   
                       
                       <div class="form-group">
-                          <label for="location">Место, где расположен маячок</label>
+                          <label class="control-label" for="location">{{#if isNewBeacon}}Где расположен маячок?{{else}}Место, где расположен маячок{{/if}}</label>
                           <select class="form-control" id="location" {{disabled}}>
                               {{#each locations}}
                               <option value="{{_id}}">{{title}}</option>
@@ -18,12 +18,14 @@
                           </select>
                       </div>
                       <div class="form-group {{inputRequired 'beacon.name'}}">
-                          <label for="name">Имя маячка</label>
+                          <label class="control-label" for="name">{{#if isNewBeacon}}Как назовёте маячок?{{else}}Имя маячка{{/if}}</label>
                           <input class="form-control" id="name" placeholder="Имя маячка" value="{{name}}">
+                          {{#if isNewBeacon}}<span class="help-block">Маячок легко найти в общем списке по имени.</span>{{/if}}
                       </div>
                       <div class="form-group {{inputRequired 'beacon.tags'}}">
-                          <label for="tags">Теги маячка</label>
+                          <label class="control-label" for="tags">{{#if isNewBeacon}}Какие назначите маячку теги?{{else}}Теги маячка{{/if}}</label>
                           <input class="form-control" id="tags" placeholder="Теги маячка" value={{tags}}>
+                          {{#if isNewBeacon}}<span class="help-block">С помощью тегов можно создать сценарий для группы маячков.</span>{{/if}}
                       </div>
                       {{#unless isNewBeacon}}
                       <div class="form-group">
@@ -45,7 +47,7 @@
                     <div class="modal-footer">
                         <div class="btn-toolbar" role="toolbar">
                             <a href="{{pathFor 'beacons'}}" class="btn btn-default">Отмена</a>
-                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Сохранить</button>
+                            <button type="submit" class="btn btn-primary">{{#if isNewBeacon}}<span class="glyphicon glyphicon-ok"></span> ОК{{else}}<span class="glyphicon glyphicon-floppy-disk"></span> Сохранить{{/if}}</button>
                             {{#unless isNewBeacon}}
                             <a href="#" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span> Удалить</a>
                             {{/unless}}
