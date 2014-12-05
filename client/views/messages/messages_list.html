@@ -1,5 +1,6 @@
 <template name="messagesList">
     {{>tabs}}
+    <div class="alert {{alertClass}}" role="alert">{{alertMessage}}</div> 
     <div class="bs-callout bs-callout-info"><h4>Создайте сообщения, которые будут показаны по заданным сценариям</h4><p>Для редактирования или удаления сообщения, нажмите на него в списке.</p></div>
 
     <p><a class="btn btn-primary" href="{{pathFor 'newmessage'}}" role="button"><span class="glyphicon glyphicon-plus"></span> Добавить сообщение</a></p>
@@ -14,5 +15,7 @@
         </a>
         {{/each}}
     </div>
-
+    {{#with confirmData}}
+        {{> confirmModal}}
+    {{/with}}
 </template>
