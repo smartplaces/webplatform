@@ -73,6 +73,14 @@ Template.scenariosList.helpers({
         }else{
             return "";
         }
+    },
+    
+    confirmData: function(){
+        return {
+            title: "Удаление сценария",
+            body: "Вы уверены, что хотите удалить этот сценарий?",
+            actionClass: 'remove-confirm-ok'
+        };
     }
 
 });
@@ -80,8 +88,19 @@ Template.scenariosList.helpers({
 Template.scenariosList.events({
     'click .scenario-item-remove': function (e){
         e.preventDefault();
-        if (confirm("Вы уверены, что хотите удалить этот сценарий?")){
-            Scenarios.remove(e.target.id);
-        };
+        Session.set('unconfirmDeleteScenario',e.target.id);
+        $('#confirmModal').modal('show');
     },
+    
+    'click .remove-confirm-ok': function(e,t){
+        e.preventDefault();
+        var id = Session.get('unconfirmDeleteScenario');
+        Session.set('unconfirmDeleteScenario',undefined);
+        $('#confirmModal').modal('hide');
+        Scenarios.remove(id, function(error){
+            if (error){
+                createAlert(error.reason);
+            }
+        });
+    }
 });

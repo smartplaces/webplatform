@@ -119,16 +119,15 @@ Template.scenarioPage.events({
     },
     
     'click #delete':function(e){
-      e.preventDefault();
-      if (confirm("Вы действительно хотите удалить этот сценарий?")){
+        e.preventDefault();
         Scenarios.remove({_id:this._id}, function(error){
-          if (error){
-              createAlert('Danger',error.reason);
+            if (error){
+                createAlert('Danger',error.reason);
             }else{
-              Router.go('scenarios');
+                Router.go('scenarios');
             }
         });
-      }
+
     },
 
     'submit form':function(e){

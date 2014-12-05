@@ -87,15 +87,13 @@ Template.messagePage.helpers({
 Template.messagePage.events({
     'click #delete':function(e){
         e.preventDefault();
-        if (confirm("Вы уверены, что хотите удалить это сообщение?")){
-            Messages.remove({_id:this._id}, function(error){
-                if (error){
-                    createAlert('Danger',error.reason);
-                }else{
-                    Router.go('messages');
-                }
-            });
-        }
+        Messages.remove({_id:this._id}, function(error){
+            if (error){
+                createAlert('Danger',error.reason);
+            }else{
+                Router.go('messages');
+            }
+        });
     },
 
     'change #image': function(e,t){

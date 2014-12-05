@@ -1,7 +1,8 @@
 <template name="beaconsList">
     {{> tabs}}
-    <div class="bs-callout bs-callout-info"><h4>Добавьте маячки, указывая, в каких местах они расположены</h4><p>Для редактирования или удаления маячка, нажмите на него в списке.</p></div>
-
+    <div class="alert {{alertClass}}" role="alert">{{alertMessage}}</div> 
+    <div class="bs-callout bs-callout-info"><h4>Добавьте маячки, указывая, в каких местах они расположены</h4><p>Для редактирования или удаления маячка, нажмите на него в списке.</p>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <p><a class="btn btn-primary" href="{{pathFor 'newbeacon'}}"><span class="glyphicon glyphicon-plus"></span> Добавить маячок</a></p>
@@ -36,5 +37,8 @@
         {{/each}}
         {{/each}}
     </div>
-
+    
+    {{#with confirmData}}
+        {{> confirmModal}}
+    {{/with}}
 </template>

@@ -1,26 +1,31 @@
 <template name="imagesList">
-  {{>tabs}}
-  <div class="bs-callout bs-callout-info"><h4>Загрузите изображения, которые будут использоваться в сообщениях и купонах</h4><p>Для редактирования или удаления сообщения, нажмите на него в списке.</p></div>
+    {{>tabs}}
+    <div class="alert {{alertClass}}" role="alert">{{alertMessage}}</div> 
+    <div class="bs-callout bs-callout-info"><h4>Загрузите изображения, которые будут использоваться в сообщениях и купонах</h4><p>Для редактирования или удаления сообщения, нажмите на него в списке.</p></div>
 
     <p><input class="uploader" type="file"></p>
-  {{#with FS.GetFile "images" uploadedImageId}}
-  {{#unless this.isUploaded}}
-  {{> FS.UploadProgressBar bootstrap=true}}
-  {{/unless}}
-  {{/with}}
+    {{#with FS.GetFile "images" uploadedImageId}}
+    {{#unless this.isUploaded}}
+    {{> FS.UploadProgressBar bootstrap=true}}
+    {{/unless}}
+    {{/with}}
 
     <div class="row">
-       {{#each images}}
-      <div class="col-xs-6 col-md-3">
-        <div class="thumbnail">
-          <div class="thumbnail-helper">
-            <img src="{{this.url store='thumbnail'}}" alt="{{this.name}}"/>
-          </div>
-          <div class="caption">
-            <a href="#" class="image-item-remove btn btn-danger btn-xs" id="{{_id}}">Удалить</a>
-          </div>
+        {{#each images}}
+        <div class="col-xs-6 col-md-3">
+            <div class="thumbnail">
+                <div class="thumbnail-helper">
+                    <img src="{{this.url store='thumbnail'}}" alt="{{this.name}}"/>
+                </div>
+                <div class="caption">
+                    <a href="#" class="image-item-remove btn btn-danger btn-xs" id="{{_id}}">Удалить</a>
+                </div>
+            </div>
         </div>
-      </div>
-      {{/each}}
-    </div>  
+        {{/each}}
+    </div>
+
+    {{#with confirmData}}
+    {{> confirmModal}}
+    {{/with}}
 </template>
