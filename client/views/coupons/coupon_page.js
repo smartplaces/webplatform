@@ -12,24 +12,12 @@ Template.couponPage.events({
 
   'click #delete': function(e){
       e.preventDefault();
-      if (confirm("Вы точно хотите удалить этот купон?")){
-        if (this.images){
-          /*
-          if (this.images && this.images.icon)
-            Icons.remove({_id:this.images.icon._id},function(error){if (error) console.log(error);});
-            */
-          if (this.images && this.images.logo)
-            Logos.remove({_id:this.images.logo._id},function(error){if (error) console.log(error);});
-          if (this.images && this.images.strip)
-          Strips.remove({_id:this.images.strip._id},function(error){if (error) console.log(error);});
-        }
-        Coupons.remove({_id:this._id}, function(error){
+      Coupons.remove({_id:this._id}, function(error){
           if (error){
-              alert(error.reason);
-            }
-        });
-        Router.go('coupons');
-      }
+              createAlert(error.reason);
+          }
+      });
+      Router.go('coupons');
   },
 
   'click #save': function(e){
@@ -61,7 +49,7 @@ Template.couponPage.events({
     }
     Meteor.call('saveCoupon',coupon,function(error){
       if (error){
-        alert(error.reason);
+        createAlert(error.reason);
       }else{
         Router.go('coupons');
       }
