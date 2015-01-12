@@ -23,7 +23,7 @@ Template.couponView.helpers({
       return logo;
     }else{
       return {
-        url: function(){return '/sample-logo.png';}
+        url: function(){return '/logo.png';}
       }
     }
   },
@@ -33,7 +33,7 @@ Template.couponView.helpers({
       return strip;
     }else{
       return {
-        url: function(){return '/sample-background.png';}
+        url: function(){return '/background.png';}
       };
     }
   },
