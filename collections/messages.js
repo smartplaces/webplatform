@@ -30,7 +30,8 @@ Meteor.methods({
       if (image){
         data.image = {
           _id: image._id,
-          key: image.getFileRecord().copies.thumbnail.key
+          key: image.getFileRecord().copies.thumbnail.key,
+          url: image.url()
         };
       }
 
