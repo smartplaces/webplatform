@@ -155,10 +155,14 @@ Template.scenarioPage.events({
 
         if (scenario.start){
             scenario.start = new Date(scenario.start.replace(/(\d{2})\.(\d{2})\.(\d{4})/,'$3-$2-$1'));
+        }else{
+            scenario.start=null;
         }
 
         if (scenario.end){
             scenario.end = new Date(scenario.end.replace(/(\d{2})\.(\d{2})\.(\d{4})/,'$3-$2-$1'));
+        }else{
+            scenario.end=null;
         }
 
         if (this._id){
